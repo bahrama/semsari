@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<style type="text/css">
+    .ui-g div {
+        background-color: #ededed;
+        text-align: center;
+        border: 1px solid #fafafa;
+    }
+    div.ui-galleria{
+    width: 100% !important;
+    }
+    .ui-galleria-panel{
+    width: 100% !important;
+    }
+    .ui-galleria-panel-wrapper{
+    width: 100% !important;
+    }
+</style>
+</h:head> 
+<h:body> 
+<p:outputPanel>
+<div class="card">
+    <div class="ui-g">
+    <!--  -->
+        <div class="ui-g-12 ui-md-12 ui-lg-3">
+     <p:badge value="2">
+         <i class="pi pi-bell" style="font-size: 2rem"/>
+     </p:badge>
+
+     <p:badge value="10+" severity="danger">
+         <i class="pi pi-calendar p-ml-4" style="font-size: 2rem"/>
+     </p:badge>
+
+     <p:badge severity="danger">
+         <i class="pi pi-envelope p-ml-4" style="font-size: 2rem"/>
+     </p:badge>
+        </div>
+   <!--  -->   
+   
+           <div class="ui-g-12 ui-md-12 ui-lg-3">
+           
+                <div class="ui-inputgroup" style="direction: rtl;">
+                    <p:inputText placeholder="Keyboard" style="width: 100%;"/>
+                    <p:commandButton icon="pi pi-search" styleClass="ui-button-warning"/>
+                </div>
+        </div>
+   
+   <!--  -->  
+        <div class="ui-g-12 ui-md-12 ui-lg-6">
+            <h:form id="frm">
+        <p:megaMenu orientation="horizontal" autoDisplay="false">
+          
+
+
+            <p:submenu label="Settings" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Setting 1">
+                        <p:menuitem value="Setting 1.1"/>
+                        <p:menuitem value="Setting 1.2"/>
+                    </p:submenu>
+                    <p:submenu label="Setting 2">
+                        <p:menuitem value="Setting 2.1"/>
+                        <p:menuitem value="Setting 2.2"/>
+                    </p:submenu>
+                    <p:submenu label="Setting 3">
+                        <p:menuitem value="Setting 3.1"/>
+                        <p:menuitem value="Setting 3.2"/>
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Setting 4">
+                        <p:menuitem value="Setting 4.1"/>
+                        <p:menuitem value="Setting 4.2"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Settings" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Setting 1">
+                        <p:menuitem value="Setting 1.1"/>
+                        <p:menuitem value="Setting 1.2"/>
+                    </p:submenu>
+                    <p:submenu label="Setting 2">
+                        <p:menuitem value="Setting 2.1"/>
+                        <p:menuitem value="Setting 2.2"/>
+                    </p:submenu>
+                    <p:submenu label="Setting 3">
+                        <p:menuitem value="Setting 3.1"/>
+                        <p:menuitem value="Setting 3.2"/>
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Setting 4">
+                        <p:menuitem value="Setting 4.1"/>
+                        <p:menuitem value="Setting 4.2"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+        </h:form>
+        </div>
+    </div>
+
+<div class="ui-g">
+
+<div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: green;">
+
+    <p:galleria value="#{imagesView.images}" var="image"  showCaption="true" autoPlay="true">
+        <p:graphicImage name="demo/#{image}" alt="Image Description for #{image}" style="width: 100% !important;height: 100% !important;"
+                        title="#{image}"/>
+    </p:galleria>
+
+</div>
+<div class="ui-g-12 ui-md-12 ui-lg-4" style="background-color: red;">
+
+        <p:carousel value="#{carouselView.products}" var="product"  autoPlayInterval="2000" responsive="true"
+                    itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
+                    style="width: 500px;" circular="true">
+            <div class="product">
+                <div class="product-grid-item p-p-5">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"/>
+                            <span class="product-category">#{product.category}</span>
+                        </div>
+                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <p:graphicImage name="demo2/#{product.image}"/>
+                        <div class="product-name">#{product.name}</div>
+                        <div class="product-description">#{product.description}</div>
+                        <p:rating readonly="true" value="#{product.rating}"/>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <h:outputText value="#{product.price}" styleClass="product-price">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+                        <p:commandButton type="button" value="Add To Cart"
+                                            icon="pi pi-shopping-cart"
+                                            disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+
+</div>
+</div>
+
+<div class="ui-g">
+<div class="ui-g-12 ui-md-12 ui-lg-12">
+    <div class="card">
+        <h5>Tabs</h5>
+        <p:carousel numVisible="1" effect="easeInStrong" style="margin-bottom:0">
+            <p:tab title="Header I">
+                <p class="p-m-0 p-p-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </p:tab>
+            <p:tab title="Header II">
+                <p class="p-m-0 p-p-3">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+                    illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                    odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+                </p>
+            </p:tab>
+            <p:tab title="Header III">
+                <p class="p-m-0 p-p-3">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                    et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                    Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                </p>
+            </p:tab>
+        </p:carousel>
+    </div>
+</div>
+</div>
+
+</div>
+</p:outputPanel>
+
+</h:body> 
+</html>
