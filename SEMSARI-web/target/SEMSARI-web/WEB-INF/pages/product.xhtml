@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>jQuery exzoom: Product Carousel Example</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"/>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <h:outputScript library="zoom" name="jquery.exzoom.js" />
+    <h:outputStylesheet library="zoom" name="jquery.exzoom.css" />
+    <style>
+    #exzoom {
+        width: 400px;
+        /*height: 400px;*/
+    }
+    .container { margin: 150px auto; max-width: 960px; }
+    .hidden { display: none; }
+</style>
+<style>
+.ui-g div {
+    background-color: initial!important;
+    text-align: center;
+    border: 1px solid #fafafa;
+}
+</style>
+
+    <div class="ui-g">
+    <div class="ui-g-12 ui-md-12 ui-lg-3">
+<p:button icon="pi pi-shopping-cart" value="افزودن به سبد خرید" styleClass="rounded-button ui-button-danger" />
+</div>
+<div class="ui-g-12 ui-md-12 ui-lg-6">
+<div>
+  <h1>text formatting</h1>
+  <p>به گزارش "ورزش سه"، استقلال در شبی که می توانست از توقف پرسپولیس نهایت استفاده را برده و اختلاف خود با صدر جدول را کمتر کند، راهی به درون چارچوب دروازه پیکان پیدا نکرد تا همچنان اختلاف سرخابی ها در عدد 4 باقی بماند و در صورت پیروزی سپاهان در بازی امروز، تفاوت امتیازی تیم مجیدی و صدر جدول به عدد 6 برسد.
+در این دیدار برای نخستین بار و به صورت رسمی از آرمان رمضانی جدیدترین یاغی فوتبال ایران رونمایی شد. این بازیکن که در تابستان گذشته و پیش از آغاز رقابت های لیگ قهرمانان آسیا از سایپا به پرسپولیس پیوست، در مدت زمان حضورش در جمع شاگردان یحیی گل محمدی فرصت درخشش پیدا نکرد و بدون تأثیرگذاری روی گل های سرخپوشان، از این تیم جدا و در انتقالی کم سر و صدا و بی خبر، راهی استقلال شد.</p>
+</div>
+</div>
+    <!--  -->
+        <div class="ui-g-12 ui-md-12 ui-lg-3">
+<div>
+<div class="exzoom hidden" id="exzoom">
+    <div class="exzoom_img_box">
+        <ul class='exzoom_img_ul'>
+<li><p:graphicImage library="demo" name="nature1.jpg"/></li>
+<li><p:graphicImage library="demo" name="nature2.jpg"/></li>
+<li><p:graphicImage library="demo" name="nature3.jpg"/></li>
+<li><p:graphicImage library="demo" name="nature4.jpg"/></li>
+        </ul>
+    </div>
+    <div class="exzoom_nav"></div>
+    <p class="exzoom_btn">
+        <a href="javascript:void(0);" class="exzoom_prev_btn">  </a>
+        <a href="javascript:void(0);" class="exzoom_next_btn">  </a>
+    </p>
+</div>
+</div>
+</div>
+</div>
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <div class="card">
+
+    <p:divider align="right">
+        <div class="p-d-inline-flex p-ai-center">
+            <i class="pi pi-user p-mr-2"/>
+            <b>Icon</b>
+        </div>
+    </p:divider>
+
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+
+    <p:divider align="center">
+        <span class="ui-tag">Badge</span>
+    </p:divider>
+
+    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+</div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+
+    $('.container').imagesLoaded( function() {
+  $("#exzoom").exzoom({
+        autoPlay: false,
+    });
+  $("#exzoom").removeClass('hidden')
+});
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</ui:composition>

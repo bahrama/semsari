@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<style type="text/css">
+    .ui-g div {
+        background-color: #ededed;
+        text-align: center;
+        border: 1px solid #fafafa;
+    }
+    div.ui-galleria{
+    width: 100% !important;
+    }
+    .ui-galleria-panel{
+    width: 100% !important;
+    }
+    .ui-galleria-panel-wrapper{
+    width: 100% !important;
+    }
+</style>
+<style>
+#mgmnu{
+direction: rtl!important;
+display: flex!important;
+}
+.ui-menuitem-text{
+margin: 15px;
+}
+</style>
+<style>
+body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
+    border-radius: 4px;
+    display: ruby-text-container;
+}
+</style>
+<style>
+    .ui-chip.custom-chip {
+        background: var(--primary-color);
+        color: var(--primary-color-text);
+    }
+</style>
+</h:head> 
+<h:body> 
+<p:outputPanel>
+<div class="card">
+    <div class="ui-g">
+    <!--  -->
+        <div class="ui-g-12 ui-md-12 ui-lg-4">
+        <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg4').show()">
+     <p:chip label="ورود" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
+     </p:commandLink>
+     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()">
+     <p:chip label="ثبت نام" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
+     </p:commandLink>
+     <p:badge value="10+" severity="danger">
+         <i class="pi pi-shopping-cart p-ml-4" style="font-size: 2rem;"/>
+     </p:badge>
+        </div>
+   <!--  -->   
+   
+           <div class="ui-g-12 ui-md-12 ui-lg-6">
+           
+                <div class="ui-inputgroup" style="direction: rtl;">
+                    <p:inputText placeholder="Keyboard" style="width: 100%;"/>
+                    <p:commandButton icon="pi pi-search" styleClass="ui-button-warning"/>
+                </div>
+        </div>
+   
+   <!--  -->  
+       
+        <div class="ui-g-12 ui-md-12 ui-lg-2">
+        <img src="resources/img/gucci.jpg" alt="logo" style="height: 40px;width: 100%;"/>
+        </div>
+    </div>
+    <div class="ui-g">
+     <div class="ui-g-12 ui-md-12 ui-lg-12">
+            <h:form id="frm" prependId="false">
+        <p:megaMenu orientation="horizontal" autoDisplay="false" id="mgmnu" style="height:50px;">
+          
+
+
+            <p:submenu label="کالای دیجیتال" icon="pi pi-fw pi-mobile" style="height:50px;">
+                <p:column>
+                    <p:submenu label="لپ تاپ">
+                        <p:menuitem value="HP"/>
+                        <p:menuitem value="Dell"/>
+                        <p:menuitem value="Asus"/>
+                        <p:menuitem value="Msi"/>
+                    </p:submenu>
+                    <p:submenu label="گوشی">
+                        <p:menuitem value="Samsung"/>
+                        <p:menuitem value="Mi"/>
+                        <p:menuitem value="Lenovo"/>
+                    </p:submenu>
+                    <p:submenu label="ساعت دیجیتال">
+                        <p:menuitem value="Sumsong"/>
+                        <p:menuitem value="Lg"/>
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="موارد دیگر">
+                        <p:menuitem value="هارد اکسترنال"/>
+                        <p:menuitem value="فلش"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="ابزار آلات" icon="pi pi-fw pi-pencil">
+                <p:column>
+                    <p:submenu label="صنعتی">
+                        <p:menuitem value="آچار"/>
+                        <p:menuitem value="پیچ گوشتی"/>
+                    </p:submenu>
+                    <p:submenu label="خانگی">
+                        <p:menuitem value="آچار"/>
+                        <p:menuitem value="پیچ گوشتی"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+            
+               <p:submenu label="ظروف یکبار مصرف" icon="pi pi-fw pi-inbox">
+                <p:column>
+                    <p:submenu label="پلاستیک">
+                        <p:menuitem value="لیوان"/>
+                        <p:menuitem value="بشقاب"/>
+                        <p:menuitem value="بشقال"/>
+                    </p:submenu>
+                    <p:submenu label="آلومینیوم">
+                        <p:menuitem value="لیوان"/>
+                        <p:menuitem value="بشقاب"/>
+                        <p:menuitem value="بشقال"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+        </h:form>
+        </div>
+    </div>
+
+<ui:insert name="mainPage" />
+
+
+<div class="ui-g">
+<div class="ui-g-12 ui-md-12 ui-lg-12" style="background-color: black!important;
+position: inherit;
+bottom: 0px;
+height: 100px;">
+</div>
+</div>
+</div>
+
+</p:outputPanel>
+<p:dialog header="Header" widgetVar="dlg4" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true">
+    <p class="p-m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</p:dialog>
+<p:dialog header="Header" widgetVar="dlg5" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true">
+ <div class="card">
+ <h:form>
+        <h5 class="p-mt-0">Match Passwords</h5>
+        <div class="p-field p-grid">
+            <p:outputLabel for="pwd1" styleClass="p-col-fixed" style="width:100px" value="Password"/>
+            <div class="p-col">
+                <p:password id="pwd1" value="#{loginBean.password}" match="pwd2" label="Password 1" required="true"/>
+            </div>
+        </div>
+
+        <div class="p-field p-grid">
+            <p:outputLabel for="pwd2" styleClass="p-col-fixed" style="width:100px" value="Password"/>
+            <div class="p-col">
+                <p:password id="pwd2" value="#{loginBean.password}" label="Password 2" required="true"/>
+            </div>
+        </div>
+
+        <p:commandButton update="@form" value="Save"/>
+
+        <p:messages id="messages" showDetail="true">
+            <p:autoUpdate/>
+        </p:messages>
+        <br/>
+        <div class="card">
+    <h:form>
+        <p:messages showDetail="true"/>
+        <p:captcha label="Captcha"/>
+        <br/>
+        <p:commandButton value="Check" action="#{loginBean.submit}" ajax="false" icon="pi pi-check"/>
+    </h:form>
+</div>
+ </h:form>
+</div>
+</p:dialog>
+</h:body> 
+</html>
