@@ -1,0 +1,6 @@
+dao\ProductDao.class
+dao\ProductDaoLocal.class
+entity\UserEntity.class
+service\ProductServiceLocal.class
+service\ProductService.class
+entity\ProductEntity.class

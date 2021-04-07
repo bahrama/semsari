@@ -22,14 +22,14 @@
     <location>/notfind.xhtml</location>
   </error-page>
 
-    <context-param>
+<!--     <context-param>
         <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
-        <param-value>PUBLIC_KEY</param-value>
+        <param-value>6LeeJp4aAAAAAB8e4F4yqDuTsQLRIKv9JfFKvmFg</param-value>
     </context-param>
 
     <context-param>
         <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
-        <param-value>PRIVATE_KEY</param-value>
-    </context-param>
+        <param-value>6LeeJp4aAAAAAO0STXCgPXDKHpRT4l45oqOBKcBq</param-value>
+    </context-param> -->
 
 </web-app>

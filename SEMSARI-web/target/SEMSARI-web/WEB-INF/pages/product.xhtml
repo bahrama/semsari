@@ -29,17 +29,7 @@
 </style>
 
     <div class="ui-g">
-    <div class="ui-g-12 ui-md-12 ui-lg-3">
-<p:button icon="pi pi-shopping-cart" value="افزودن به سبد خرید" styleClass="rounded-button ui-button-danger" />
-</div>
-<div class="ui-g-12 ui-md-12 ui-lg-6">
-<div>
-  <h1>text formatting</h1>
-  <p>به گزارش "ورزش سه"، استقلال در شبی که می توانست از توقف پرسپولیس نهایت استفاده را برده و اختلاف خود با صدر جدول را کمتر کند، راهی به درون چارچوب دروازه پیکان پیدا نکرد تا همچنان اختلاف سرخابی ها در عدد 4 باقی بماند و در صورت پیروزی سپاهان در بازی امروز، تفاوت امتیازی تیم مجیدی و صدر جدول به عدد 6 برسد.
-در این دیدار برای نخستین بار و به صورت رسمی از آرمان رمضانی جدیدترین یاغی فوتبال ایران رونمایی شد. این بازیکن که در تابستان گذشته و پیش از آغاز رقابت های لیگ قهرمانان آسیا از سایپا به پرسپولیس پیوست، در مدت زمان حضورش در جمع شاگردان یحیی گل محمدی فرصت درخشش پیدا نکرد و بدون تأثیرگذاری روی گل های سرخپوشان، از این تیم جدا و در انتقالی کم سر و صدا و بی خبر، راهی استقلال شد.</p>
-</div>
-</div>
-    <!--  -->
+        <!--  -->
         <div class="ui-g-12 ui-md-12 ui-lg-3">
 <div>
 <div class="exzoom hidden" id="exzoom">
@@ -59,24 +49,29 @@
 </div>
 </div>
 </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-3" style="display: inline-grid;
+justify-content: center;
+align-items: center;
+height: 200px;">
+<p:button icon="pi pi-shopping-cart" value="افزودن به سبد خرید" styleClass="rounded-button ui-button-danger" />
+<p:spinner id="minMax" value="#{loginBean.number}" min="0" max="100" style="margin-top: -90px;"/>
+</div>
+<div class="ui-g-12 ui-md-12 ui-lg-6">
+<div>
+  <h1>text formatting</h1>
+  <p>به گزارش "ورزش سه"، استقلال در شبی که می توانست از توقف پرسپولیس نهایت استفاده را برده و اختلاف خود با صدر جدول را کمتر کند، راهی به درون چارچوب دروازه پیکان پیدا نکرد تا همچنان اختلاف سرخابی ها در عدد 4 باقی بماند و در صورت پیروزی سپاهان در بازی امروز، تفاوت امتیازی تیم مجیدی و صدر جدول به عدد 6 برسد.
+در این دیدار برای نخستین بار و به صورت رسمی از آرمان رمضانی جدیدترین یاغی فوتبال ایران رونمایی شد. این بازیکن که در تابستان گذشته و پیش از آغاز رقابت های لیگ قهرمانان آسیا از سایپا به پرسپولیس پیوست، در مدت زمان حضورش در جمع شاگردان یحیی گل محمدی فرصت درخشش پیدا نکرد و بدون تأثیرگذاری روی گل های سرخپوشان، از این تیم جدا و در انتقالی کم سر و صدا و بی خبر، راهی استقلال شد.</p>
+</div>
+</div>
+
 </div>
     <div class="ui-g">
         <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="card">
 
-    <p:divider align="right">
-        <div class="p-d-inline-flex p-ai-center">
-            <i class="pi pi-user p-mr-2"/>
-            <b>Icon</b>
-        </div>
-    </p:divider>
-
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-        voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
 
     <p:divider align="center">
-        <span class="ui-tag">Badge</span>
+        <span class="ui-tag">مشخصات فنی</span>
     </p:divider>
 
     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
