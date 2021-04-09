@@ -4,19 +4,22 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import entity.Product;
 import entity.ProductEntity;
 
 @Local
 public interface ProductServiceLocal {
 
-	void insertProductEntity(ProductEntity productEntity);
+	void insertProductEntity(Product product);
 
-	List<ProductEntity> findAllproductEntity();
+	List<Product> findAllproductEntity();
 
-	ProductEntity findProductEntityById(long productId) throws Exception;
+	Product findProductEntityById(long productId) throws Exception;
 
-	void updateProductEntity(ProductEntity productEntity) throws Exception;
+	void updateProductEntity(Product product) throws Exception;
 
-	void deleteProductEntity(ProductEntity productEntity);
+	void deleteProductEntity(Product product);
+
+
 
 }

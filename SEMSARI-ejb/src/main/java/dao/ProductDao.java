@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import entity.Product;
 import entity.ProductEntity;
 
 /**
@@ -26,8 +27,8 @@ public class ProductDao implements ProductDaoLocal {
     
     
     @Override
-    public void insertProductEntity(ProductEntity productEntity){
-    	entityManager.persist(productEntity);
+    public void insertProductEntity(Product product){
+    	entityManager.persist(product);
     }
     
     
@@ -35,15 +36,15 @@ public class ProductDao implements ProductDaoLocal {
     
     @Override
     @SuppressWarnings("unchecked")
-	public List<ProductEntity> findAllproductEntity(){
-    	return entityManager.createNamedQuery("ProductEntity.findAll").getResultList();
+	public List<Product> findAllproductEntity(){
+    	return entityManager.createNamedQuery("Product.findAll").getResultList();
     }
     
     
     @Override
-    public ProductEntity findProductEntityById(long productId) throws Exception{
+    public Product findProductEntityById(long productId) throws Exception{
     	try {
-    	return (ProductEntity) entityManager.createNamedQuery("ProductEntity.findByProductId").setParameter("v_productId", productId).getSingleResult();
+    	return (Product) entityManager.createNamedQuery("Product.findByProductId").setParameter("v_productId", productId).getSingleResult();
     }catch(Exception exception) {
     	throw new Exception();
     }
@@ -51,18 +52,18 @@ public class ProductDao implements ProductDaoLocal {
     
     
     @Override
-    public void updateProductEntity(ProductEntity productEntity) throws Exception{
+    public void updateProductEntity(Product product) throws Exception{
     	try {
-    	entityManager.merge(productEntity);
+    	entityManager.merge(product);
     	}catch (Exception e) {
 			throw new Exception();
 		}
     }
     
     @Override
-    public void deleteProductEntity(ProductEntity productEntity){
-    	ProductEntity homeEntity2=new ProductEntity();
-    	homeEntity2=entityManager.merge(productEntity);
+    public void deleteProductEntity(Product product){
+    	Product homeEntity2=new Product();
+    	homeEntity2=entityManager.merge(product);
     	entityManager.remove(homeEntity2);
     }
 }

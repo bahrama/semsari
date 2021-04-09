@@ -1,18 +1,17 @@
 package ir.persikala.ui;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Column;
-import javax.servlet.http.Part;
 
 import org.primefaces.model.file.UploadedFile;
 
-import entity.ProductEntity;
+import entity.Product;
 import ir.persikala.req.FileConvert;
 import service.ProductServiceLocal;
 
@@ -32,7 +31,8 @@ public class ProductAdmin implements Serializable {
 	private ProductServiceLocal productServiceLocal;
 	
 	private String productName;
-	private String productCat;
+	private String productCat1;
+	private String productCat2;
 	private String productSummary;
 	private String productDescription;
 	private UploadedFile pic1;
@@ -42,19 +42,14 @@ public class ProductAdmin implements Serializable {
 	private UploadedFile pic5;
 	private UploadedFile pic6;
 	private FileConvert fileConvert;
-
+	private long price;
 	public String getProductName() {
 		return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductCat() {
-		return productCat;
-	}
-	public void setProductCat(String productCat) {
-		this.productCat = productCat;
-	}
+
 	public String getProductSummary() {
 		return productSummary;
 	}
@@ -105,8 +100,29 @@ public class ProductAdmin implements Serializable {
 	public void setPic6(UploadedFile pic6) {
 		this.pic6 = pic6;
 	}
+	
+	
+	
+	public String getProductCat1() {
+		return productCat1;
+	}
+	public void setProductCat1(String productCat1) {
+		this.productCat1 = productCat1;
+	}
+	public String getProductCat2() {
+		return productCat2;
+	}
+	public void setProductCat2(String productCat2) {
+		this.productCat2 = productCat2;
+	}
+	public long getPrice() {
+		return price;
+	}
+	public void setPrice(long price) {
+		this.price = price;
+	}
 	public void insertToProduct() {
-		ProductEntity productEntity=new ProductEntity();
+		Product productEntity=new Product();
 		fileConvert=new FileConvert();
 		try {
 			String s=pic1.getFileName();
@@ -116,10 +132,13 @@ public class ProductAdmin implements Serializable {
 			productEntity.setPic4(fileConvert.convertPicture(pic4));
 			productEntity.setPic5(fileConvert.convertPicture(pic5));
 			productEntity.setPic6(fileConvert.convertPicture(pic6));
-			productEntity.setProductCat(productCat);
+			productEntity.setProductCat1(productCat1);
+			productEntity.setProductCat2(productCat2);
+			productEntity.setPrice(price);
 			productEntity.setProductDescription(fileConvert.convertString(productDescription));
 			productEntity.setProductName(productName);
 			productEntity.setProductSummary(productSummary);
+			productEntity.setInputDate(new Date());
 			productServiceLocal.insertProductEntity(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***با موفقیت وارد گردید***"));

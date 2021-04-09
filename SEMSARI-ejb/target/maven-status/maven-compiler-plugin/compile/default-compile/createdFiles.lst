@@ -1,6 +1,10 @@
 dao\ProductDao.class
-dao\ProductDaoLocal.class
-entity\UserEntity.class
+entity\UserAddress.class
 service\ProductServiceLocal.class
+entity\OrderProduct.class
+entity\ViewProduct.class
+entity\User.class
+dao\ProductDaoLocal.class
+entity\Product.class
 service\ProductService.class
 entity\ProductEntity.class

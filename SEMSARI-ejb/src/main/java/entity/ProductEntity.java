@@ -32,26 +32,30 @@ public class ProductEntity implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ProductId")
 	private int productId;
-	@Column(name="ProductName" , length=200,nullable=true)
+	@Column(name="ProductName" , length=200,nullable=false)
 	private String productName;
-	@Column(name="ProductCat" , length=200,nullable=true)
-	private String productCat;
-	@Column(name="ProductSummary" , length=2000,nullable=true)
+	@Column(name="ProductCat1" , length=200,nullable=false)
+	private String productCat1;
+	@Column(name="ProductCat2" , length=200,nullable=false)
+	private String productCat2;
+	@Column(name="ProductSummary" , length=2000,nullable=false)
 	private String productSummary;
-	@Column(name="ProductDescription" , length=100,nullable=true)
+	@Column(name="ProductDescription" , length=100,nullable=false)
 	private String productDescription;
-	@Column(name="Pic1" , length=100,nullable=true)
+	@Column(name="Pic1" , length=100,nullable=false)
 	private String pic1;
-	@Column(name="Pic2" , length=100,nullable=true)
+	@Column(name="Pic2" , length=100,nullable=false)
 	private String pic2;
-	@Column(name="Pic3" , length=100,nullable=true)
+	@Column(name="Pic3" , length=100,nullable=false)
 	private String pic3;
-	@Column(name="Pic4" , length=100,nullable=true)
+	@Column(name="Pic4" , length=100,nullable=false)
 	private String pic4;
-	@Column(name="Pic5" , length=100,nullable=true)
+	@Column(name="Pic5" , length=100,nullable=false)
 	private String pic5;
-	@Column(name="Pic6" , length=100,nullable=true)
+	@Column(name="Pic6" , length=100,nullable=false)
 	private String pic6;
+	@Column(name="Price")
+	private long price;
 	public int getProductId() {
 		return productId;
 	}
@@ -64,11 +68,24 @@ public class ProductEntity implements Serializable{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductCat() {
-		return productCat;
+
+	public String getProductCat1() {
+		return productCat1;
 	}
-	public void setProductCat(String productCat) {
-		this.productCat = productCat;
+	public void setProductCat1(String productCat1) {
+		this.productCat1 = productCat1;
+	}
+	public String getProductCat2() {
+		return productCat2;
+	}
+	public void setProductCat2(String productCat2) {
+		this.productCat2 = productCat2;
+	}
+	public long getPrice() {
+		return price;
+	}
+	public void setPrice(long price) {
+		this.price = price;
 	}
 	public String getProductSummary() {
 		return productSummary;

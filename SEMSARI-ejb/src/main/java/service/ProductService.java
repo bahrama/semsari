@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.ProductDaoLocal;
+import entity.Product;
 import entity.ProductEntity;
 
 /**
@@ -24,8 +25,8 @@ public class ProductService implements ProductServiceLocal {
     private ProductDaoLocal productDaoLocal;
     
     @Override
-    public void insertProductEntity(ProductEntity productEntity){
-    	productDaoLocal.insertProductEntity(productEntity);
+    public void insertProductEntity(Product product){
+    	productDaoLocal.insertProductEntity(product);
     }
     
     
@@ -33,25 +34,25 @@ public class ProductService implements ProductServiceLocal {
     
     @Override
     @SuppressWarnings("unchecked")
-	public List<ProductEntity> findAllproductEntity(){
+	public List<Product> findAllproductEntity(){
     	return productDaoLocal.findAllproductEntity();
     }
     
     
     @Override
-    public ProductEntity findProductEntityById(long productId) throws Exception{
+    public Product findProductEntityById(long productId) throws Exception{
     	return productDaoLocal.findProductEntityById(productId);
     }
     
     
     @Override
-    public void updateProductEntity(ProductEntity productEntity) throws Exception{
-    	productDaoLocal.updateProductEntity(productEntity);
+    public void updateProductEntity(Product product) throws Exception{
+    	productDaoLocal.updateProductEntity(product);
     }
     
     @Override
-    public void deleteProductEntity(ProductEntity productEntity){
-    	productDaoLocal.deleteProductEntity(productEntity);
+    public void deleteProductEntity(Product product){
+    	productDaoLocal.deleteProductEntity(product);
     }
 
 }

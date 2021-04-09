@@ -7,6 +7,11 @@
 	<persistence-unit name="aliUnit">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/aliDBDS</jta-data-source>
+		<class>entity.OrderProduct</class>
+		<class>entity.Product</class>
+		<class>entity.UserAddress</class>
+		<class>entity.User</class>
+		<class>entity.ViewProduct</class>
 		<properties>
 			<!-- <property name="wildfly.jpa.twophasebootstrap" value="false" /> -->
 			<!-- <property name="eclipselink.weaving.fetchgroups" value="false" /> -->
