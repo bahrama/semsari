@@ -1,11 +1,20 @@
 package ir.persikala.ui;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.UUID;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import entity.User;
+import service.UserServiceLocal;
 
 @Named
 @SessionScoped
@@ -19,9 +28,23 @@ public class LoginBean implements Serializable {
 	public LoginBean() {
 		// TODO Auto-generated constructor stub
 	}
-	private String nameApp;
+	
+	@Inject
+	private UserServiceLocal userServiceLocal; 
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+	
+	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
+	private String username;
+	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" , message="فرمت ایمیل اشتباه می باشد")
 	private String email;
+	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
 	private String password;
+	
+	
+	
+	private String nameApp;
+	
+	
 	private int number;
 
 	public String getPassword() {
@@ -55,6 +78,35 @@ public class LoginBean implements Serializable {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public void register() {
+		User user=new User();
+		user.setEmail(email);
+		user.setPass(password);
+		user.setUsername(username);
+		user.setRegisterDate(new Date());
+		UUID uuid=UUID.randomUUID();
+		user.setUserToken(uuid.toString());
+		try {
+		userServiceLocal.insertUser(user);
+		session.setAttribute("userToken",uuid.toString());
+		session.setMaxInactiveInterval(59*60);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("***با موفقیت ثبت گردید***"));
+		}catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "این کاربر در سیستم وجود دارد", "این کاربر در سیستم وجود دارد"));
+		}
+		}
 
 	public void submit() {
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "Correct");
