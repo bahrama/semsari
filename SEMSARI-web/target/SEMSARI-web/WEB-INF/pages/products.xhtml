@@ -2,7 +2,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
 	<style>
 .ui-g div {
 	background-color: white !important;
@@ -15,7 +16,7 @@
         <div class="ui-g-12 ui-md-12 ui-lg-12"> -->
 	<div class="product card">
 		<h:form>
-			<p:dataScroller value="#{carouselView.products}" var="product"
+			<p:dataScroller value="#{productsPageBean.findProductsPage(productCat1,productCat2)}" var="product"
 				chunkSize="5">
 				<f:facet name="header">
                 Scroll Down to Load More Products
@@ -28,15 +29,18 @@
 				<div class="product" style="background-color: white; margin: 50px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 					<div class="product-list-item p-p-5">
 						<div class="ui-g">
-							<div class="ui-g-12 ui-md-12 ui-lg-4"><p:graphicImage name="demo2/#{product.image}" /></div>
+							<div class="ui-g-12 ui-md-12 ui-lg-4"><o:graphicImage styleClass="imgcard"
+									rendered="#{productsPageBean.findPic(product.productId) ne null}"
+									value="#{productsPageBean.findPic(product.productId)}"
+									dataURI="true" /></div>
 							<div class="ui-g-12 ui-md-12 ui-lg-4">
 								<div class="product-list-detail"
 									style="display: inline-grid; justify-content: center; align-items: center; height: 200px;">
-									<div class="product-name">#{product.name}</div>
-									<div class="product-description">#{product.description}</div>
-									<p:rating readonly="true" value="#{product.rating}" />
+									<div class="product-name">#{product.productName}</div>
+									<div class="product-description">#{product.productSummary}</div>
+									<p:rating readonly="true" value="#{product.price}" />
 									<i class="pi pi-tag product-category-icon" /><span
-										class="product-category">#{product.category}</span>
+										class="product-category">#{product.productCat1}</span>
 								</div>
 							</div>
 							<div class="ui-g-12 ui-md-12 ui-lg-4">
@@ -45,10 +49,10 @@
 								<f:convertNumber currencySymbol="$" type="currency" />
 							</h:outputText>
 							<p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-								disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+								>
 							</p:commandButton>
 							<span
-								class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+								class="product-badge status-#{product.productCat2}">#{product.productCat2}</span>
 						</div>
 							</div>
 						</div>

@@ -19,4 +19,6 @@ public interface UserDaoLocal {
 
 	void deleteUser(User user);
 
+	User findUserByEmail(String email) throws Exception;
+
 }

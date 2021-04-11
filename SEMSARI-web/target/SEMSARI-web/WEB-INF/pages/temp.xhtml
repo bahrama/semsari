@@ -56,7 +56,7 @@ body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
      <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()">
      <p:chip label="ثبت نام" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
      </p:commandLink>
-     <p:chip label="#{homeBean.userName}" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
+     <p:chip label="#{homeBean.findUser()}" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;" id="unme"/>
      <p:badge value="10+" severity="danger">
          <i class="pi pi-shopping-cart p-ml-4" style="font-size: 2rem;"/>
      </p:badge>
@@ -87,7 +87,10 @@ body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
             <p:submenu label="کالای دیجیتال" icon="pi pi-fw pi-mobile" style="height:50px;">
                 <p:column>
                     <p:submenu label="لپ تاپ">
-                        <p:menuitem value="HP"/>
+                        <p:menuitem value="HP" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="laptop"/>
+                        <f:param name="productCat2" value="HP"/>
+                        </p:menuitem>
                         <p:menuitem value="Dell"/>
                         <p:menuitem value="Asus"/>
                         <p:menuitem value="Msi"/>
@@ -157,18 +160,22 @@ height: 100px;">
 
 </p:outputPanel>
 <p:dialog header="Header" widgetVar="dlg4" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true" style="direction: rtl;" responsive="true">
+       <h:form>
+        <p:messages id="msgss2"/>
          <div class="p-field p-grid">
             <p:outputLabel for="nameapp2" styleClass="p-col-fixed" style="width:100px" value="نام کاربری"/>
             <div class="p-col">
-                <p:inputText id="nameapp2" value="#{loginBean.username}" required="true" style="width: 100%;"/>
+                <p:inputText id="nameapp2" value="#{loginBean.email}" required="true" style="width: 100%;"/>
             </div>
         </div>
         <div class="p-field p-grid">
             <p:outputLabel styleClass="p-col-fixed" style="width:100px" value="Password"/>
             <div class="p-col">
-                <p:password id="pwd3" value="#{loginBean.password}" match="pwd2" label="Password 1" required="true" style="width: 100%;"/>
+                <p:password id="pwd3" value="#{loginBean.password}" label="Password" required="true" style="width: 100%;"/>
             </div>
         </div>
+       <p:commandButton actionListener="#{loginBean.login()}" update="@form msgss2 unme" value="Login" />   
+        </h:form>
 </p:dialog>
 <p:dialog header="Header" widgetVar="dlg5" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true" style="direction: rtl;" responsive="true">
  <div class="card">
@@ -201,7 +208,7 @@ height: 100px;">
                 <p:password id="pwd2" value="#{loginBean.password}" label="Password 2" required="true" style="width: 100%;"/>
             </div>
         </div>
-        <p:commandButton actionListener="#{loginBean.register()}" update="@form message3 message2 message1 msgss" value="Save" />
+        <p:commandButton actionListener="#{loginBean.register()}" update="@form message3 message2 message1 msgss unme" value="Save" />
 
  </h:form>
 </div>

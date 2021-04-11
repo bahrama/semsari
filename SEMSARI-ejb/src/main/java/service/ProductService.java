@@ -54,5 +54,11 @@ public class ProductService implements ProductServiceLocal {
     public void deleteProductEntity(Product product){
     	productDaoLocal.deleteProductEntity(product);
     }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Product> findProductEntityByProductCat(String productCat1,String productCat2) throws Exception{
+    	return productDaoLocal.findProductEntityByProductCat(productCat1, productCat2);
+    }
 
 }

@@ -2,6 +2,7 @@ package ir.persikala.ui;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.enterprise.context.SessionScoped;
@@ -40,6 +41,7 @@ public class LoginBean implements Serializable {
 	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
 	private String password;
 	
+	private User userOnline;
 	
 	
 	private String nameApp;
@@ -99,7 +101,7 @@ public class LoginBean implements Serializable {
 		user.setUserToken(uuid.toString());
 		try {
 		userServiceLocal.insertUser(user);
-		session.setAttribute("userToken",uuid.toString());
+		session.setAttribute("userName",user.getUsername());
 		session.setMaxInactiveInterval(59*60);
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("***با موفقیت ثبت گردید***"));
@@ -111,6 +113,25 @@ public class LoginBean implements Serializable {
 	public void submit() {
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "Correct");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void login() {
+		this.userOnline=new User();
+		try {
+			this.userOnline=userServiceLocal.findUserByEmail(email);
+			if(userOnline.getPass().equals(password)) {
+			session.setAttribute("userName",userOnline.getUsername());
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("***خوش آمدید***"));
+			}
+			} catch (Exception e) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "نام کاربری یا رمز عبور اشتباه میباشد", "نام کاربری یا رمز عبور اشتباه میباشد"));
+			e.printStackTrace();
+		}
+	}
+	
+	public List<User> findAllUser(){
+		return userServiceLocal.findAllUser();
 	}
 
 }

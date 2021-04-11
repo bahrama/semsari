@@ -2,6 +2,7 @@ package ir.persikala.ui;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -146,6 +147,10 @@ public class ProductAdmin implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Product> findAllProduct(){
+		return productServiceLocal.findAllproductEntity();
 	}
 
 }

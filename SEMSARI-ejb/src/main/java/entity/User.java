@@ -21,7 +21,8 @@ import java.util.Set;
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
-	@NamedQuery(name="User.findById", query="SELECT m FROM User m WHERE m.userId=:v_userId")
+	@NamedQuery(name="User.findById", query="SELECT m FROM User m WHERE m.userId=:v_userId"),
+	@NamedQuery(name="User.findByEmail", query="SELECT m FROM User m WHERE m.email=:v_email")
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;

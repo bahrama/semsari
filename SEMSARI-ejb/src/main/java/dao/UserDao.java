@@ -54,6 +54,15 @@ public class UserDao implements UserDaoLocal {
     }
     }
     
+    @Override
+    public User findUserByEmail(String email) throws Exception{
+    	try {
+    	return (User) entityManager.createNamedQuery("User.findByEmail").setParameter("v_email", email).getSingleResult();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
+    
     
     @Override
     public void updateUser(User user) throws Exception{

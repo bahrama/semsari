@@ -54,4 +54,8 @@ public class UserService implements UserServiceLocal {
     	userDaoLocal.deleteUser(user);
     }
 
+    @Override
+    public User findUserByEmail(String email) throws Exception{
+    	return userDaoLocal.findUserByEmail(email);
+    }
 }

@@ -19,4 +19,6 @@ public interface UserServiceLocal {
 
 	void deleteUser(User user);
 
+	User findUserByEmail(String email) throws Exception;
+
 }

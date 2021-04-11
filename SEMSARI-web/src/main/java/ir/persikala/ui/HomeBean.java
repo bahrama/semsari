@@ -66,9 +66,12 @@ public class HomeBean implements Serializable {
 		user.setUserToken(uuid.toString());
 	}
 	
+	public String findUser() {
+		return (String) session.getAttribute("userName");
+	}
 	@PostConstruct
-	public void startHome() {
-		this.userName=(String) session.getAttribute("username");
+	public void startInit() {
+		session.setAttribute("userName", "مهمان");
 	}
 	
 	
