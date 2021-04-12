@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +61,22 @@ public class FileConvert {
 			ImageIO.write(image1, "jpg", baos1);
 			return baos1.toByteArray();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
+	
+	public String convertBlogHead(String blogName) throws Exception{
+        try {
+		File file = new File("C:\\Users\\Administrator.DESKTOP-KKSACKO\\Documents\\pictures\\" + blogName + ".txt");
+		byte[] bytesArray = new byte[(int) file.length()];
+		FileInputStream fis = new FileInputStream(file);
+		fis.read(bytesArray);
+		fis.close();
+		String string=new String(bytesArray ,StandardCharsets.UTF_8);
+		return string;
+        }catch (Exception e) {
+			throw new Exception("file not find");
+		}
+}
 }

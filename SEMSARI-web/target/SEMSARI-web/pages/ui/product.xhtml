@@ -4,8 +4,16 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	
+		<ui:define name="metadata">
+	<f:metadata>
+		<f:viewParam name="productId" />
+	</f:metadata>
+		</ui:define>
+	
 		<ui:define name="mainPage">
 		<ui:decorate template="../../WEB-INF/pages/product.xhtml" >
+		<ui:param name="productId" value="#{productId}" />
 		</ui:decorate>
 		</ui:define>
 

@@ -16,6 +16,11 @@
 		rowsPerPageTemplate="5,10,15" dir="rtl" style="margin:20px"
 		selectionMode="single">
 
+		<p:column styleClass="fontIranS" headerText="idd"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productId}">
+			<h:outputText value="#{transVar.productId}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
 
 		<p:column styleClass="fontIranS" headerText="price"
 			style="font-family:IRANSansBold" sortBy="#{transVar.productId}">

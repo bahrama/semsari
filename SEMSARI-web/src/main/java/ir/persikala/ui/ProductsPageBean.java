@@ -40,17 +40,11 @@ public class ProductsPageBean implements Serializable {
 	public byte[] findPic(long productId) {
 		fileConvert =new FileConvert();
 		try {
-			System.err.println("***************************************************");
-			System.err.println("***************************************************");
-			System.err.println("***************************************************");
-			System.err.println("***************************************************");
-			System.err.println("***************************************************");
-			System.err.println("***************************************************");
-			System.err.println(productServiceLocal.findProductEntityById(productId).getPic1().toString());
+			System.err.println(productServiceLocal.findProductEntityById(productId).getProductCat1());
 			return fileConvert.findPic(productServiceLocal.findProductEntityById(productId).getPic1());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
