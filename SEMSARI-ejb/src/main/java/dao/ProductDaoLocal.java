@@ -20,6 +20,8 @@ public interface ProductDaoLocal {
 
 	void deleteProductEntity(Product product);
 
+	List<Product> findProductEntityByProductCat(String productCat1, String productCat2) throws Exception;
+
 
 
 }

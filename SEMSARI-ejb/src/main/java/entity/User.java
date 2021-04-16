@@ -20,7 +20,9 @@ import java.util.Set;
 @Table(name="users")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.findById", query="SELECT m FROM User m WHERE m.userId=:v_userId"),
+	@NamedQuery(name="User.findByEmail", query="SELECT m FROM User m WHERE m.email=:v_email")
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +32,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USERS_USERID_GENERATOR")
 	@Column(name="userid")
 	private long userId;
-	@Column(name="email" , length=100,nullable=false)
+	@Column(name="email" , length=100,nullable=false , unique=true)
 	private String email;
 	@Column(name="pass" , length=100,nullable=false)
 	private String pass;

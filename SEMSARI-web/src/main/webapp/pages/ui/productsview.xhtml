@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<p:dataTable var="transVar" id="tbl1" styleClass="fontIranS"
+		value="#{productAdmin.findAllProduct()}" rows="10"
+		rowKey="#{transVar.productId}" paginator="true"
+		resizableColumns="true" liveResize="true"
+		selection="#{walletTransactionBean.walletTransactionEntity}"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" dir="rtl" style="margin:20px"
+		selectionMode="single">
+
+		<p:column styleClass="fontIranS" headerText="idd"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productId}">
+			<h:outputText value="#{transVar.productId}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+		<p:column styleClass="fontIranS" headerText="price"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productId}">
+			<h:outputText value="#{transVar.price}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+		<p:column styleClass="fontIranS" headerText="productName"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productName}">
+			<h:outputText value="#{transVar.productName}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+		<p:column styleClass="fontIranS" headerText="productCat1"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productCat1}">
+			<h:outputText value="#{transVar.productCat1}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+		<p:column styleClass="fontIranS" headerText="productCat2"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productCat2}">
+			<h:outputText value="#{transVar.productCat2}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+		<p:column styleClass="fontIranS" headerText="username"
+			style="font-family:IRANSansBold" sortBy="#{transVar.productName}">
+			<h:outputText value="#{transVar.productName}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+		<p:column styleClass="fontIranS" headerText="pic1"
+			style="font-family:IRANSansBold" sortBy="#{transVar.pic1}">
+			<h:outputText value="#{transVar.pic1}"
+				style="font-family:IRANSansNor;" />
+		</p:column>
+
+	</p:dataTable>
+</body>
+</html>
