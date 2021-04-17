@@ -55,21 +55,31 @@ direction: rtl;
                 <p:outputLabel for="productCat1" value="productCat1"/>
                <p:selectOneMenu id="productCat1" value="#{productAdmin.productCat1}" dir="rtl" style="width: 100%;">
                     <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="mobile" itemValue="mobile"/>
+                    <f:selectItem itemLabel="Mobile" itemValue="Mobile"/>
                     <f:selectItem itemLabel="laptop" itemValue="laptop"/>
-                    <f:selectItem itemLabel="pc" itemValue="pc"/>
+                    <f:selectItem itemLabel="Watch" itemValue="Watch"/>
                 </p:selectOneMenu>
                 <p:message for="productCat1"/>
                 
                                 <p:outputLabel for="productCat2" value="productCat2"/>
                <p:selectOneMenu id="productCat2" value="#{productAdmin.productCat2}" dir="rtl" style="width: 100%;">
                     <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="HP" itemValue="HP"/>
+                    <f:selectItem itemLabel="Hp" itemValue="Hp"/>
                     <f:selectItem itemLabel="Dell" itemValue="Dell"/>
                     <f:selectItem itemLabel="Asus" itemValue="Asus"/>
                     <f:selectItem itemLabel="Msi" itemValue="Msi"/>
+                    <f:selectItem itemLabel="Lenovo" itemValue="Lenovo"/>
+                    <f:selectItem itemLabel="Lg" itemValue="Lg"/>
+                    <f:selectItem itemLabel="Samsung" itemValue="Samsung"/>
+                    <f:selectItem itemLabel="Mi" itemValue="Mi"/>
                 </p:selectOneMenu>
                 <p:message for="productCat2"/>
+                
+                
+
+                
+                
+                
                 
                 <p:outputLabel for="pic1" value="pic1"/>
                 <p:fileUpload value="#{productAdmin.pic1}" mode="simple" skinSimple="true" id="pic1" required="true" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />

@@ -2,15 +2,18 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
 
 	<div class="ui-g">
 
 <div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: green;">
 
-    <p:galleria value="#{imagesView.images}" var="image"  showCaption="true" autoPlay="true">
-        <p:graphicImage name="demo/#{image}" alt="Image Description for #{image}" style="width: 100% !important;height: 100% !important;"
-                        title="#{image}"/>
+    <p:galleria value="#{homeBean.slide}" var="image"  showCaption="true" autoPlay="true">
+        <o:graphicImage 
+					rendered="#{homeBean.findPic6(image.pic6) ne null}"
+					value="#{homeBean.findPic6(image.pic6)}"
+					dataURI="true" alt="Image Description for #{image.productName}" style="width: 100% !important;height: 100% !important;" title="#{image.productName}"/>
     </p:galleria>
 
 </div>

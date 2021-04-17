@@ -80,7 +80,8 @@ height: 200px;">
 <div class="ui-g-12 ui-md-12 ui-lg-6">
 <div>
   <h1>#{productPageBean.product.productName}</h1>
-  <p>#{productPageBean.product.productSummary}</p>
+      							<h:outputText value="#{productPageBean.product.productSummary}"
+								escape="false" />
 </div>
 </div>
 

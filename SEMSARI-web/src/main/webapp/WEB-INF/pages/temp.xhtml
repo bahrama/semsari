@@ -87,22 +87,46 @@ body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
             <p:submenu label="کالای دیجیتال" icon="pi pi-fw pi-mobile" style="height:50px;">
                 <p:column>
                     <p:submenu label="لپ تاپ">
-                        <p:menuitem value="HP" outcome="/pages/ui/products.xhtml">
+                        <p:menuitem value="Hp" outcome="/pages/ui/products.xhtml">
                         <f:param name="productCat1" value="laptop"/>
-                        <f:param name="productCat2" value="HP"/>
+                        <f:param name="productCat2" value="Hp"/>
                         </p:menuitem>
-                        <p:menuitem value="Dell"/>
-                        <p:menuitem value="Asus"/>
-                        <p:menuitem value="Msi"/>
+                        <p:menuitem value="Dell" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="laptop"/>
+                        <f:param name="productCat2" value="Dell"/>
+                        </p:menuitem>
+                        <p:menuitem value="Asus" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="laptop"/>
+                        <f:param name="productCat2" value="Asus"/>
+                        </p:menuitem>
+                        <p:menuitem value="Msi" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="laptop"/>
+                        <f:param name="productCat2" value="Msi"/>
+                        </p:menuitem>
                     </p:submenu>
                     <p:submenu label="گوشی">
-                        <p:menuitem value="Samsung"/>
-                        <p:menuitem value="Mi"/>
-                        <p:menuitem value="Lenovo"/>
+                        <p:menuitem value="Samsung" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="Mobile"/>
+                        <f:param name="productCat2" value="Samsung"/>
+                        </p:menuitem>
+                        <p:menuitem value="Mi" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="Mobile"/>
+                        <f:param name="productCat2" value="Mi"/>
+                        </p:menuitem>
+                        <p:menuitem value="Lenovo" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="Mobile"/>
+                        <f:param name="productCat2" value="Lenovo"/>
+                        </p:menuitem>
                     </p:submenu>
                     <p:submenu label="ساعت دیجیتال">
-                        <p:menuitem value="Sumsong"/>
-                        <p:menuitem value="Lg"/>
+                        <p:menuitem value="Lenovo" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="Watch"/>
+                        <f:param name="productCat2" value="Sumsong"/>
+                        </p:menuitem>
+                        <p:menuitem value="Lg" outcome="/pages/ui/products.xhtml">
+                        <f:param name="productCat1" value="Watch"/>
+                        <f:param name="productCat2" value="Lg"/>
+                        </p:menuitem>
                     </p:submenu>
                 </p:column>
 

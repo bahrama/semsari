@@ -1,6 +1,8 @@
 package ir.persikala.ui;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +14,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import entity.Product;
 import entity.User;
+import ir.persikala.req.FileConvert;
+import service.ProductServiceLocal;
 import service.UserServiceLocal;
 
 @Named
@@ -30,9 +35,10 @@ public class HomeBean implements Serializable {
 	
 	private String userName="مهمان";
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-
-	
-	
+	@Inject
+	private ProductServiceLocal productServiceLocal;
+	private List<Product> slide=new ArrayList<>();
+	private FileConvert fileConvert;
 	
 	public String getUserName() {
 		return userName;
@@ -40,6 +46,14 @@ public class HomeBean implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public List<Product> getSlide() {
+		return slide;
+	}
+
+	public void setSlide(List<Product> slide) {
+		this.slide = slide;
 	}
 
 	@Inject
@@ -72,7 +86,27 @@ public class HomeBean implements Serializable {
 	@PostConstruct
 	public void startInit() {
 		session.setAttribute("userName", "مهمان");
+		int size=productServiceLocal.findAllproductEntity().size();
+	    slide.add(productServiceLocal.findAllproductEntity().get(size-1));
+	    slide.add(productServiceLocal.findAllproductEntity().get(size-2));
+	    slide.add(productServiceLocal.findAllproductEntity().get(size-3));
+	    slide.add(productServiceLocal.findAllproductEntity().get(size-4));
+	    slide.add(productServiceLocal.findAllproductEntity().get(size-5));
+		
 	}
+	
+	public byte[] findPic6(String pic) {
+		fileConvert =new FileConvert();
+		try {
+			return fileConvert.findPic(pic);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 	
 	
 	
