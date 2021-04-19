@@ -21,4 +21,6 @@ public interface UserDaoLocal {
 
 	User findUserByEmail(String email) throws Exception;
 
+	User findUserByUserToken(String userToken) throws Exception;
+
 }

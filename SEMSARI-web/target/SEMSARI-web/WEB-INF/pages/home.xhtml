@@ -4,12 +4,19 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui">
+<style>
+.ui-galleria-caption{
+color: black;
+opacity: 0.8;
+}
+</style>
+
 
 	<div class="ui-g">
 
-<div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: green;">
+<div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: darkgray !important;">
 
-    <p:galleria value="#{homeBean.slide}" var="image"  showCaption="true" autoPlay="true">
+    <p:galleria value="#{homeBean.findAllSlide()}" var="image"  showCaption="true" autoPlay="true">
         <o:graphicImage 
 					rendered="#{homeBean.findPic6(image.pic6) ne null}"
 					value="#{homeBean.findPic6(image.pic6)}"

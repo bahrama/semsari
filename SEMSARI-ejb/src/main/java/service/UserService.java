@@ -58,4 +58,9 @@ public class UserService implements UserServiceLocal {
     public User findUserByEmail(String email) throws Exception{
     	return userDaoLocal.findUserByEmail(email);
     }
+    
+    @Override
+    public User findUserByUserToken(String userToken) throws Exception{
+    	return userDaoLocal.findUserByUserToken(userToken);
+    }
 }

@@ -16,7 +16,7 @@ opacity: 0.8;
 
 <div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: darkgray !important;">
 
-    <p:galleria value="#{homeBean.slide}" var="image"  showCaption="true" autoPlay="true">
+    <p:galleria value="#{homeBean.findAllSlide()}" var="image"  showCaption="true" autoPlay="true">
         <o:graphicImage 
 					rendered="#{homeBean.findPic6(image.pic6) ne null}"
 					value="#{homeBean.findPic6(image.pic6)}"

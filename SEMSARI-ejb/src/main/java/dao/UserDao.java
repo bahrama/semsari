@@ -79,5 +79,14 @@ public class UserDao implements UserDaoLocal {
     	homeEntity2=entityManager.merge(user);
     	entityManager.remove(homeEntity2);
     }
+    
+    @Override
+    public User findUserByUserToken(String userToken) throws Exception{
+    	try {
+    	return (User) entityManager.createNamedQuery("User.findByUserToken").setParameter("v_userToken", userToken).getSingleResult();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
 
 }

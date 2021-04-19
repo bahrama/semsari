@@ -12,6 +12,8 @@
 		<class>entity.UserAddress</class>
 		<class>entity.User</class>
 		<class>entity.ViewProduct</class>
+		<class>entity.Blog</class>
+		<class>entity.ViewBlog</class>
 		<properties>
 			<!-- <property name="wildfly.jpa.twophasebootstrap" value="false" /> -->
 			<!-- <property name="eclipselink.weaving.fetchgroups" value="false" /> -->

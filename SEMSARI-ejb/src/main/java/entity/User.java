@@ -22,7 +22,8 @@ import java.util.Set;
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
 	@NamedQuery(name="User.findById", query="SELECT m FROM User m WHERE m.userId=:v_userId"),
-	@NamedQuery(name="User.findByEmail", query="SELECT m FROM User m WHERE m.email=:v_email")
+	@NamedQuery(name="User.findByEmail", query="SELECT m FROM User m WHERE m.email=:v_email"),
+	@NamedQuery(name="User.findByUserToken", query="SELECT m FROM User m WHERE m.userToken=:v_userToken")
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;

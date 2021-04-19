@@ -10,6 +10,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -33,7 +36,8 @@ public class LoginBean implements Serializable {
 	@Inject
 	private UserServiceLocal userServiceLocal; 
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-	
+	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
 	private String username;
 	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" , message="فرمت ایمیل اشتباه می باشد")
@@ -103,6 +107,11 @@ public class LoginBean implements Serializable {
 		userServiceLocal.insertUser(user);
 		session.setAttribute("userName",user.getUsername());
 		session.setMaxInactiveInterval(59*60);
+		/////////////
+		Cookie cookie = new Cookie("userAuth", uuid.toString());
+		cookie.setPath("/");
+		response.addCookie(cookie);
+		/////////////
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("***با موفقیت ثبت گردید***"));
 		}catch (Exception e) {
