@@ -12,6 +12,7 @@ import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import entity.Blog;
 import entity.Product;
 
 /**
@@ -30,8 +31,11 @@ public class SingleToneSessionBean implements SingleToneSessionBeanLocal {
     
 	@Inject
 	private ProductServiceLocal productServiceLocal;
+	@Inject
+	private BlogServiceLocal blogServiceLocal;
 	
 	private List<Product> slideProduct=new ArrayList<Product>();
+	private List<Blog> slideHomeBlog=new ArrayList<>();
 	
 	
 	@Override
@@ -45,6 +49,21 @@ public class SingleToneSessionBean implements SingleToneSessionBeanLocal {
 		this.slideProduct = slideProduct;
 	}
 	
+	
+	
+	@Override
+	public List<Blog> getSlideHomeBlog() {
+		return slideHomeBlog;
+	}
+
+
+
+	public void setSlideHomeBlog(List<Blog> slideHomeBlog) {
+		this.slideHomeBlog = slideHomeBlog;
+	}
+
+
+
 	@PostConstruct
 	public void singleInit() {
 		for (int i = 0; i < 20; i++) {
@@ -58,11 +77,19 @@ public class SingleToneSessionBean implements SingleToneSessionBeanLocal {
 	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
 	public void ejra() {
 		slideProduct.clear();
+		slideHomeBlog.clear();
 		for (int i = 0; i < 20; i++) {
 			Random random = new Random();
 			int randSize = random.nextInt(productServiceLocal.findAllproductEntity().size()-1);
 			slideProduct.add(productServiceLocal.findAllproductEntity().get(randSize));
 		}
+		
+		for (int i = 0; i < 5; i++) {
+			Random random = new Random();
+			int randSize = random.nextInt(blogServiceLocal.findAllBlog().size()-1);
+			slideHomeBlog.add(blogServiceLocal.findAllBlog().get(randSize));
+		}
+		
 
 		
 	}

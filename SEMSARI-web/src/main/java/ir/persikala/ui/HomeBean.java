@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entity.Blog;
 import entity.Product;
 import entity.User;
 import ir.persikala.req.FileConvert;
@@ -155,6 +156,10 @@ public class HomeBean implements Serializable {
 	
 	public List<Product> findAllSlide(){
 		return singleToneSessionBeanLocal.getSlideProduct();
+	}
+	
+	public List<Blog> findAllBlogSlide(){
+		return singleToneSessionBeanLocal.getSlideHomeBlog();
 	}
 	
 	public byte[] findPic6(String pic) {

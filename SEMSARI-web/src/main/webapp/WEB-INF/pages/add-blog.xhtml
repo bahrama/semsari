@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<script type="text/javascript">
+    //<![CDATA[
+    function handleForm(xhr, status, args) {
+        if (args.validationFailed)
+            PF('spot').show();
+        else
+            PF('spot').hide();
+    }
+
+    //]]>
+</script>
+<style>
+.ui-panel-content{
+direction: rtl;
+}
+</style>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-lg-10">
+            <h:form prependId="false" enctype="multipart/form-data">
+        <p:growl id="growl"/>
+
+        <p:panel id="pnl" header="افزودن محصول">
+            <p:messages id="messages"/>
+            <h:panelGrid columns="3" id="grid" cellpadding="7" dir="rtl" style="width: 100%;">
+                <p:outputLabel for="productName" value="productName"/>
+                <p:inputText id="productName" value="#{blogAdminBean.blogName}" required="true" style="width:100%;">
+                </p:inputText>
+                <p:message for="productName"/>
+                
+                
+                <p:outputLabel for="productSummary" value="productSummary"/>
+                <p:inputTextarea id="productSummary" value="#{blogAdminBean.summary}" required="true" style="width:100%;" autoResize="true">
+                 <f:validateLength minimum="2"/>
+                </p:inputTextarea>
+                <p:message for="productSummary"/>
+                
+                <p:outputLabel for="productDescription" value="productDescription"/>
+                <p:inputTextarea id="productDescription" value="#{blogAdminBean.page}" required="true" style="width:100%;" autoResize="true">
+                 <f:validateLength minimum="2"/>
+                </p:inputTextarea>
+                <p:message for="productDescription"/>
+                
+                <p:outputLabel for="productCat1" value="productCat1"/>
+               <p:selectOneMenu id="productCat1" value="#{blogAdminBean.blogCategury1}" dir="rtl" style="width: 100%;">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Mobile" itemValue="Mobile"/>
+                    <f:selectItem itemLabel="laptop" itemValue="laptop"/>
+                    <f:selectItem itemLabel="Watch" itemValue="Watch"/>
+                </p:selectOneMenu>
+                <p:message for="productCat1"/>
+                
+                                <p:outputLabel for="productCat2" value="productCat2"/>
+               <p:selectOneMenu id="productCat2" value="#{blogAdminBean.blogCategury2}" dir="rtl" style="width: 100%;">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Hp" itemValue="Hp"/>
+                    <f:selectItem itemLabel="Dell" itemValue="Dell"/>
+                    <f:selectItem itemLabel="Asus" itemValue="Asus"/>
+                    <f:selectItem itemLabel="Msi" itemValue="Msi"/>
+                    <f:selectItem itemLabel="Lenovo" itemValue="Lenovo"/>
+                    <f:selectItem itemLabel="Lg" itemValue="Lg"/>
+                    <f:selectItem itemLabel="Samsung" itemValue="Samsung"/>
+                    <f:selectItem itemLabel="Mi" itemValue="Mi"/>
+                </p:selectOneMenu>
+                <p:message for="productCat2"/>
+                
+                
+
+                
+                
+            
+                
+                
+            </h:panelGrid>
+
+            <p:commandButton value="Save" icon="pi pi-check" action="#{blogAdminBean.insertBlog()}" update="growl grid"
+                             oncomplete="handleForm(xhr, status, args)" styleClass="p-mt-3"/>
+        </p:panel>
+
+        <p:spotlight target="pnl" widgetVar="spot"/>
+    </h:form>
+        </div>
+    <!--  -->
+        <div class="ui-g-12 ui-md-12 ui-lg-2">
+        <h:form>
+            <div class="card">
+        <p:menu style="direction: rtl;
+float: right;
+width: 100%;
+text-align: right;">
+            <p:submenu label="Options">
+                <p:menuitem value="Save (Non-Ajax)"  ajax="false"
+                            icon="pi pi-save"/>
+                <p:menuitem value="Update"   icon="pi pi-refresh"/>
+                <p:menuitem value="Delete"  icon="pi pi-times"/>
+            </p:submenu>
+            <p:submenu label="Navigations">
+                <p:menuitem value="Website" url="http://www.primefaces.org" icon="pi pi-external-link"/>
+                <p:menuitem value="Internal" icon="pi pi-upload"/>
+            </p:submenu>
+        </p:menu>
+    </div>
+    </h:form>
+        </div>
+
+        </div>
+  </ui:composition>
