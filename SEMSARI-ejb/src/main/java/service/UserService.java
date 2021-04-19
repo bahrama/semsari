@@ -63,4 +63,9 @@ public class UserService implements UserServiceLocal {
     public User findUserByUserToken(String userToken) throws Exception{
     	return userDaoLocal.findUserByUserToken(userToken);
     }
+    
+    @Override
+    public User findUserByUserToken2(String userToken2) throws Exception{
+    	return userDaoLocal.findUserByUserToken2(userToken2);
+    }
 }

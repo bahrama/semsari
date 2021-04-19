@@ -23,4 +23,6 @@ public interface UserServiceLocal {
 
 	User findUserByUserToken(String userToken) throws Exception;
 
+	User findUserByUserToken2(String userToken2) throws Exception;
+
 }

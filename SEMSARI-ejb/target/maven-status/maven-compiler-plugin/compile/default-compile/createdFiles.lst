@@ -6,11 +6,15 @@ dao\UserDao.class
 service\SingleToneSessionBeanLocal.class
 entity\OrderProduct.class
 service\ProductService.class
+service\BlogServiceLocal.class
 service\UserServiceLocal.class
 entity\UserAddress.class
 dao\UserDaoLocal.class
 entity\ViewBlog.class
+dao\BlogDaoLocal.class
+dao\BlogDao.class
 entity\ViewProduct.class
+service\BlogService.class
 entity\User.class
 dao\ProductDaoLocal.class
 entity\Product.class

@@ -88,5 +88,14 @@ public class UserDao implements UserDaoLocal {
     	throw new Exception();
     }
     }
+    
+    @Override
+    public User findUserByUserToken2(String userToken2) throws Exception{
+    	try {
+    	return (User) entityManager.createNamedQuery("User.findByUserToken2").setParameter("v_userToken2", userToken2).getSingleResult();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
 
 }

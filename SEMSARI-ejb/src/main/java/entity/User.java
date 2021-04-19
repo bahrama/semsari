@@ -23,7 +23,8 @@ import java.util.Set;
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
 	@NamedQuery(name="User.findById", query="SELECT m FROM User m WHERE m.userId=:v_userId"),
 	@NamedQuery(name="User.findByEmail", query="SELECT m FROM User m WHERE m.email=:v_email"),
-	@NamedQuery(name="User.findByUserToken", query="SELECT m FROM User m WHERE m.userToken=:v_userToken")
+	@NamedQuery(name="User.findByUserToken", query="SELECT m FROM User m WHERE m.userToken=:v_userToken"),
+	@NamedQuery(name="User.findByUserToken2", query="SELECT m FROM User m WHERE m.userToken2=:v_userToken2")
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -45,6 +46,8 @@ public class User implements Serializable {
 	private String username;
 	@Column(name="usertoken" , length=100,nullable=false)
 	private String userToken;
+	@Column(name="usertoken2" , length=100,nullable=true)
+	private String userToken2;
 
 	//bi-directional many-to-one association to OrderProduct
 	@OneToMany(mappedBy="user",cascade={CascadeType.ALL})
@@ -131,6 +134,14 @@ public class User implements Serializable {
 
 	public void setViewProducts(Set<ViewProduct> viewProducts) {
 		this.viewProducts = viewProducts;
+	}
+
+	public String getUserToken2() {
+		return userToken2;
+	}
+
+	public void setUserToken2(String userToken2) {
+		this.userToken2 = userToken2;
 	}
 
 	

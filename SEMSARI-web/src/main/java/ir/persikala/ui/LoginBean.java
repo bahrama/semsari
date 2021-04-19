@@ -32,12 +32,12 @@ public class LoginBean implements Serializable {
 	public LoginBean() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Inject
 	private UserServiceLocal userServiceLocal; 
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-	HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+	//HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
 	private String username;
 	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" , message="فرمت ایمیل اشتباه می باشد")
@@ -96,26 +96,41 @@ public class LoginBean implements Serializable {
 	}
 	
 	public void register() {
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		Cookie[] userCookies = request.getCookies();
+		String userAuth = "";
+		if (userCookies != null && userCookies.length > 0) {
+			for (int i = 0; i < userCookies.length; i++) {
+				if (userCookies[i].getName().equals("userAuth")) {
+					// System.err.println(userCookies[i]);
+					userAuth = userCookies[i].getValue();
+					break;
+				}
+			}
+		}
 		User user=new User();
-		user.setEmail(email);
-		user.setPass(password);
-		user.setUsername(username);
-		user.setRegisterDate(new Date());
-		UUID uuid=UUID.randomUUID();
-		user.setUserToken(uuid.toString());
 		try {
-		userServiceLocal.insertUser(user);
-		session.setAttribute("userName",user.getUsername());
-		session.setMaxInactiveInterval(59*60);
-		/////////////
-		Cookie cookie = new Cookie("userAuth", uuid.toString());
-		cookie.setPath("/");
-		response.addCookie(cookie);
-		/////////////
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage("***با موفقیت ثبت گردید***"));
-		}catch (Exception e) {
+			user=userServiceLocal.findUserByUserToken(userAuth);
+			user.setEmail(email);
+			user.setPass(password);
+			user.setUsername(username);
+			user.setRegisterDate(new Date());
+			UUID uuid=UUID.randomUUID();
+			user.setUserToken2(uuid.toString());
+			userServiceLocal.updateUser(user);
+			session.setAttribute("userName",user.getUsername());
+			session.setMaxInactiveInterval(59*60);
+			/////////////
+			Cookie cookie = new Cookie("userAuthReg", uuid.toString());
+			cookie.setPath("/SEMSARI-web");
+			cookie.setMaxAge(2592000);
+			response.addCookie(cookie);
+			/////////////
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("***با موفقیت ثبت گردید***"));
+		} catch (Exception e1) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "این کاربر در سیستم وجود دارد", "این کاربر در سیستم وجود دارد"));
+			e1.printStackTrace();
 		}
 		}
 

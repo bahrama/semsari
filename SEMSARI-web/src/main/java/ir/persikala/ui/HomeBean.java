@@ -39,7 +39,7 @@ public class HomeBean implements Serializable {
 	
 	private String userName="مهمان";
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-	HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+	//HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 	@Inject
 	private ProductServiceLocal productServiceLocal;
@@ -47,7 +47,7 @@ public class HomeBean implements Serializable {
 	private SingleToneSessionBeanLocal singleToneSessionBeanLocal;
 	private List<Product> slide=new ArrayList<>();
 	private FileConvert fileConvert;
-	
+	private User user=new User();
 	public String getUserName() {
 		return userName;
 	}
@@ -93,8 +93,10 @@ public class HomeBean implements Serializable {
 	}
 	@PostConstruct
 	public void startInit() {
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		Cookie[] userCookies = request.getCookies();
 		String userAuth = "";
+		String userAuthReg = "";
 		if (userCookies != null && userCookies.length > 0) {
 			for (int i = 0; i < userCookies.length; i++) {
 				if (userCookies[i].getName().equals("userAuth")) {
@@ -103,12 +105,21 @@ public class HomeBean implements Serializable {
 					break;
 				}
 			}
+			for (int i = 0; i < userCookies.length; i++) {
+				if (userCookies[i].getName().equals("userAuthReg")) {
+					// System.err.println(userCookies[i]);
+					userAuthReg = userCookies[i].getValue();
+					break;
+				}
+			}
 		}
-		if(userAuth.equals("")) {
+		if(userAuthReg.equals("")) {
+			if(userAuth.equals("")) {
 		session.setAttribute("userName", "مهمان");
 		UUID uuid=UUID.randomUUID();
 		Cookie cookie2 = new Cookie("userAuth", uuid.toString());
-		cookie2.setPath("/");
+		cookie2.setPath("/SEMSARI-web");
+		cookie2.setMaxAge(2592000);
 		response.addCookie(cookie2);
 		User user=new User();
 		user.setEmail("guest");
@@ -122,30 +133,26 @@ public class HomeBean implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}else {
-			User user=new User();
+			}
+			else {
+				try {
+					user=userServiceLocal.findUserByUserToken(userAuth);
+					session.setAttribute("userName", "user " + user.getUserId());
+				} catch (Exception e) {
+					session.setAttribute("userName", "مهمان");
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		else {
+			
 			try {
-				user=userServiceLocal.findUserByUserToken(userAuth);
+				user=userServiceLocal.findUserByUserToken2(userAuthReg);
 				if(!user.equals(null)) {
 					session.setAttribute("userName", user.getUsername());
 				}else {
 					session.setAttribute("userName", "مهمان");
-					UUID uuid=UUID.randomUUID();
-					Cookie cookie2 = new Cookie("userAuth", uuid.toString());
-					cookie2.setPath("/");
-					response.addCookie(cookie2);
-					User user2=new User();
-					user2.setEmail("guest");
-					user2.setPass("guest");
-					user2.setRegisterDate(new Date());
-					user2.setUsername("guest");
-					user2.setUserToken(uuid.toString());
-					try {
-						userServiceLocal.insertUser(user2);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
