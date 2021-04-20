@@ -67,7 +67,15 @@ public class HomeBean implements Serializable {
 	@Inject
 	private UserServiceLocal userServiceLocal;
 	
-	 FacesContext contex = FacesContext.getCurrentInstance();
+	 public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	FacesContext contex = FacesContext.getCurrentInstance();
 	public void insertToUser() {
 		HttpServletRequest request = (HttpServletRequest) contex.getExternalContext().getRequest();
     	

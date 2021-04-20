@@ -140,11 +140,20 @@ public class LoginBean implements Serializable {
 	}
 	
 	public void login() {
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		this.userOnline=new User();
 		try {
 			this.userOnline=userServiceLocal.findUserByEmail(email);
 			if(userOnline.getPass().equals(password)) {
 			session.setAttribute("userName",userOnline.getUsername());
+			Cookie cookie = new Cookie("userAuth", userOnline.getUserToken());
+			Cookie cookie2 = new Cookie("userAuthReg", userOnline.getUserToken2());
+			cookie.setPath("/SEMSARI-web");
+			cookie.setMaxAge(2592000);
+			cookie2.setPath("/SEMSARI-web");
+			cookie2.setMaxAge(2592000);
+			response.addCookie(cookie);
+			response.addCookie(cookie2);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***خوش آمدید***"));
 			}

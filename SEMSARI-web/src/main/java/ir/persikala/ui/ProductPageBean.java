@@ -1,13 +1,16 @@
 package ir.persikala.ui;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import entity.ViewProduct;
 import ir.persikala.req.FileConvert;
 import service.ProductServiceLocal;
+import service.ViewProductServiceLocal;
 
 @Named
 @ViewScoped
@@ -24,6 +27,12 @@ public class ProductPageBean implements Serializable {
 	
 	@Inject
 	private ProductServiceLocal productServiceLocal;
+	@Inject
+	private ViewProductServiceLocal viewProductServiceLocal;
+	
+	@Inject
+	private HomeBean homeBean;
+	
 	private FileConvert fileConvert;
 	private entity.Product product=new entity.Product();
 	
@@ -37,6 +46,7 @@ public class ProductPageBean implements Serializable {
 
 	public byte[] findPic1(long productId) {
 		fileConvert =new FileConvert();
+		
 		try {
 			this.product=productServiceLocal.findProductEntityById(productId);
 			return fileConvert.findPic(product.getPic1());
@@ -50,6 +60,7 @@ public class ProductPageBean implements Serializable {
 	public byte[] findPic2() {
 		fileConvert =new FileConvert();
 		try {
+
 			return fileConvert.findPic(product.getPic2());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -105,6 +116,11 @@ public class ProductPageBean implements Serializable {
 	public String blog() {
 		fileConvert =new FileConvert();
 		try {
+			ViewProduct viewProduct=new ViewProduct();
+			viewProduct.setProduct(product);
+			viewProduct.setUser(homeBean.getUser());
+			viewProduct.setViewDate(new Date());
+			viewProductServiceLocal.insertViewProduct(viewProduct);
 			return fileConvert.convertBlogHead(product.getProductDescription());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

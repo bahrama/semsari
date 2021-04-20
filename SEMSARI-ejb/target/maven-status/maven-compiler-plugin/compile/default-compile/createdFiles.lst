@@ -5,12 +5,19 @@ service\UserService.class
 dao\UserDao.class
 service\SingleToneSessionBeanLocal.class
 entity\OrderProduct.class
+service\ViewBlogServiceLocal.class
+dao\ViewProductDaoLocal.class
 service\ProductService.class
 service\BlogServiceLocal.class
 service\UserServiceLocal.class
+dao\ViewBlogDao.class
+service\ViewBlogService.class
 entity\UserAddress.class
+dao\ViewBlogDaoLocal.class
 dao\UserDaoLocal.class
+service\ViewProductService.class
 entity\ViewBlog.class
+service\ViewProductServiceLocal.class
 dao\BlogDaoLocal.class
 dao\BlogDao.class
 entity\ViewProduct.class
@@ -20,3 +27,4 @@ dao\ProductDaoLocal.class
 entity\Product.class
 entity\Blog.class
 entity\ProductEntity.class
+dao\ViewProductDao.class

@@ -32,12 +32,13 @@ public class ViewBlog implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="userid")
 	private User user;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="viewblogdate")
 	private Date viewblogdate;
 
 	//bi-directional many-to-one association to Blog
-	@ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="blogid")
 	private Blog blog;
 
