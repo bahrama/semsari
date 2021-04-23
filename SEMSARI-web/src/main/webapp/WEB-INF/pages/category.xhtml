@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+	<style>
+.ui-g div {
+	background-color: white !important;
+	text-align: center;
+	border: 1px solid #fafafa;
+}
+</style>
+<script src="../../resources/readmore/readmore.js"></script>
+    <div class="ui-g">
+     <div class="ui-g-12 ui-md-12 ui-lg-12">
+     <div class="card" style="text-align: right;direction: rtl;">
+		<p:commandLink value="خانه" action="home?faces-redirect=true" actionListener="#{homeBean.pathAct}">
+		<f:attribute name="path2" value=""/>
+		</p:commandLink>/
+		<p:link value="#{productCat1}" outcome="/pages/ui/category.xhtml">
+        <f:param name="productCat1" value="#{productCat1}"/>
+        </p:link>  
+
+</div>
+     </div>
+     </div>
+	<div class="product card">
+
+	<p:fieldset legend="Header" toggleable="true" toggleSpeed="500">
+<div class="container">
+	<h1>Read More/Read Less Buttons</h1>
+		<article>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum metus ac semper finibus. Praesent vulputate augue ac tempus congue.
+				Curabitur in sapien semper, tristique arcu eget, pharetra risus. Donec tempus aliquet purus eu lobortis.
+				Etiam ac finibus felis. Integer congue sit amet neque sit amet pellentesque. Donec cursus interdum rutrum.
+				Interdum et malesuada fames ac ante ipsum primis in faucibus.
+			</p>
+			<p class="read-more">Praesent luctus at erat at sagittis.
+				Etiam posuere, erat nec laoreet ornare, odio dui mattis nisl, convallis semper ligula lectus eu turpis.
+				Phasellus pharetra risus tortor, eget fringilla tortor laoreet at. Quisque egestas tristique dui. Mauris non iaculis ex.
+				Ut pellentesque, massa ut molestie egestas, tortor leo imperdiet sem, vitae malesuada nibh dolor in magna. Etiam pulvinar pharetra dolor, vel dapibus ipsum commodo eget.
+				Praesent turpis odio, suscipit ut ullamcorper vel, finibus at ligula. Phasellus dolor lectus, molestie a velit sed, iaculis rhoncus risus.
+				Ut id pellentesque erat, quis elementum ligula. Donec dignissim diam sem, a bibendum erat mattis quis. Vivamus id erat dui. Vestibulum sollicitudin ac justo at lacinia.
+			</p>
+		</article>
+	</div>
+     </p:fieldset>
+
+
+
+	</div>
+	
+	<script>
+		$(function(){
+			$(".read-more").readmore({
+				buttonClasses: "btn btn-primary",
+			});
+		});
+
+		/*
+			$(function(){
+				$(".read-more").readmore({
+					hideText: "Any text",
+					readText: "New text",
+					isTextShown: true,
+					effect: true,
+					effectOption: "slow",
+					buttonClasses: "btn-primary opacity-rollover",
+					id: "read-more-action"
+				});
+			})
+
+		*/
+	</script>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</ui:composition>

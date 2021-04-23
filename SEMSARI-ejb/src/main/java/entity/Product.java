@@ -22,7 +22,8 @@ import java.util.Set;
 @NamedQueries({
 	@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p"),
 	@NamedQuery(name="Product.findByProductId", query="SELECT m FROM Product m WHERE m.productId=:v_productId"),
-	@NamedQuery(name="Product.findByProductCat", query="SELECT m FROM Product m WHERE (m.productCat1=:v_productCat1 AND m.productCat2=:v_productCat2)")
+	@NamedQuery(name="Product.findByProductCat", query="SELECT m FROM Product m WHERE (m.productCat1=:v_productCat1 AND m.productCat2=:v_productCat2)"),
+	@NamedQuery(name="Product.findByProductCat1", query="SELECT m FROM Product m WHERE m.productCat1=:v_productCat1")
 })
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;

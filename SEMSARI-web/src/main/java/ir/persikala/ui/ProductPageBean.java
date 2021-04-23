@@ -44,11 +44,10 @@ public class ProductPageBean implements Serializable {
 		this.product = product;
 	}
 
-	public byte[] findPic1(long productId) {
+	public byte[] findPic1() {
 		fileConvert =new FileConvert();
 		
 		try {
-			this.product=productServiceLocal.findProductEntityById(productId);
 			return fileConvert.findPic(product.getPic1());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -129,4 +128,13 @@ public class ProductPageBean implements Serializable {
 		}
 	}
 
+	public entity.Product findProductById(long productId){
+		try {
+	  this.product=productServiceLocal.findProductEntityById(productId);
+	  return this.product;
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

@@ -60,6 +60,16 @@ public class ProductDao implements ProductDaoLocal {
     }
     }
     
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Product> findProductEntityByProductCat1(String productCat1) throws Exception{
+    	try {
+    	return  entityManager.createNamedQuery("Product.findByProductCat1").setParameter("v_productCat1", productCat1).getResultList();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
+    
     
     @Override
     public void updateProductEntity(Product product) throws Exception{

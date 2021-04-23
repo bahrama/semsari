@@ -8,12 +8,16 @@
 		<ui:define name="metadata">
 	<f:metadata>
 		<f:viewParam name="productId" />
+		<f:viewParam name="productCat1" />
+		<f:viewParam name="productCat2" />
 	</f:metadata>
 		</ui:define>
 	
 		<ui:define name="mainPage">
 		<ui:decorate template="../../WEB-INF/pages/product.xhtml" >
 		<ui:param name="productId" value="#{productId}" />
+		<ui:param name="productCat1" value="#{productCat1}" />
+		<ui:param name="productCat2" value="#{productCat2}" />
 		</ui:decorate>
 		</ui:define>
 

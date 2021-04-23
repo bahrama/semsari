@@ -22,6 +22,8 @@ public interface ProductServiceLocal {
 
 	List<Product> findProductEntityByProductCat(String productCat1, String productCat2) throws Exception;
 
+	List<Product> findProductEntityByProductCat1(String productCat1) throws Exception;
+
 
 
 }

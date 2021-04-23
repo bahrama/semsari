@@ -1,0 +1,141 @@
+1- SELECT DISTINCt productid from view_product
+SELECT DISTINCt userid,productid from view_product
+-------------------------------
+2-select count(*) from view_product
+SELECT COUNT(DISTINCT productid) from view_product
+-----------------------------------
+3-SELECT userid+productid,viewdate from view_product جمع و ضرب و ..
+---------------------------------------
+4-SELECT * FROM view_product WHERE view_product.viewdate <'2020-10-10'
+SELECT * FROM view_product WHERE view_product.viewdate <'2020-10-10' AND view_product.productid > 1000
+SELECT * FROM view_product WHERE view_product.viewdate <'2020-10-10' OR view_product.productid > 1000
+SELECT * FROM view_product WHERE NOT view_product.viewdate <'2020-10-10' AND view_product.productid > 1000
+SELECT * FROM view_product WHERE view_product.viewid BETWEEN 106751 AND 106902
+SELECT * FROM users WHERE users.username IN('ali' , 'pari')
+---------------------------------------
+5-SELECT * from view_product ORDER BY view_product.productid DESC
+SELECT * FROM users ORDER BY users.username ASC , users.userid DESC
+---------------------------------------
+6-SELECT MAX(users.userid) FROM users where username='ali'
+SELECT AVG(users.userid) FROM users
+SELECT SUM(users.userid) FROM users
+-----------------------------------------
+7-SELECT * FROM users where username LIKE '%a'
+SELECT * FROM users where username LIKE '_a%'
+SELECT * FROM users where username LIKE '_a_i%'
+-----------------------------------------
+8-SELECT userid+productid AS total,viewdate from view_product تعریف آلیاس و اسم ستون
+-----------------------------------------
+9-SELECT * FROM users LIMIT 10
+-------------------------------------
+10-SELECT * FROM users WHERE users.usertoken2 IS NULL
+SELECT * FROM users WHERE users.usertoken2 IS NOT NULL
+---------------------------------------JOOOIN--------------------------
+11-SELECT * from view_product JOIN users ON users.userid=view_product.userid
+--
+SELECT view_product.viewdate , view_product.productid , users.userid , users.username from view_product 
+JOIN users ON users.userid=view_product.userid
+--
+SELECT view_product.viewdate , product.productname , users.userid , users.username from view_product 
+JOIN users ON users.userid=view_product.userid
+JOIN product ON product.productid=view_product.productid
+--
+SELECT view_product.viewdate , product.productname , users.userid , users.username from view_product 
+JOIN users ON users.userid=view_product.userid
+JOIN product ON product.productid=view_product.productid
+WHERE product.productname LIKE '%GF63%'
+--
+SELECT view_product.viewdate , view_product.userid , product.productname from view_product
+LEFT JOIN product ON view_product.productid=product.productid تمام جدول های سمت چپ یعنی اونایی که رابطه دارن و رابطه ندارن با نول نشون میده
+--
+SELECT view_product.viewdate , view_product.userid , product.productname from view_product
+RIGHT JOIN product ON view_product.productid=product.productid
+--
+SELECT view_product.viewdate , view_product.userid , product.productname from view_product
+RIGHT JOIN product ON view_product.productid=product.productid
+WHERE view_product.userid IS NULL
+--
+SELECT view_product.viewdate , view_product.userid , product.productname from view_product
+FULL JOIN product ON view_product.productid=product.productid
+--
+SELECT * from view_product
+FULL JOIN product USING (productid) میشه بجای view_product.productid=product.productid
+--
+SELECT * from view_product میشه جای بالایی وقتی فارن کی داشتیم استفاده کرد
+NATURAL JOIN product 
+--------------------------------------------------------------------
+12-SELECT productid , count(*) from view_product GROUP BY productid میگه هر productid چند بار تکرار شده
+--
+SELECT productid , count(*),product.productname from view_product
+NATURAL JOIN product
+GROUP BY productid,product.productname 
+--
+SELECT productid , AVG(productid),product.productname from view_product
+NATURAL JOIN product
+GROUP BY productid,product.productname 
+--
+SELECT productid , ROUND(AVG(productid)),product.productname from view_product
+NATURAL JOIN product
+GROUP BY productid,product.productname 
+--
+SELECT productid , ROUND(AVG(productid)) AS rnd,product.productname from view_product
+NATURAL JOIN product
+where product.productid <102300
+GROUP BY productid,product.productname 
+ORDER BY rnd DESC
+--
+SELECT productid , ROUND(AVG(productid)) AS rnd,product.productname from view_product برای شرط گذاشتن روی فیلد های گروپ بای
+NATURAL JOIN product
+where product.productid <102300
+GROUP BY productid,product.productname 
+HAVING ROUND(AVG(productid))<102100
+ORDER BY rnd DESC
+--
+SELECT count(*) AS rnd,product.productname,users.username from view_product میگه محصول با هر یوزر چنبار بوده و کل وجود محصول
+NATURAL JOIN product
+NATURAL JOIN users
+GROUP BY GROUPING SETS (product.productname,(product.productname,users.username))
+ORDER BY rnd DESC
+--
+SELECT count(*) AS rnd,product.productname,users.username from view_product
+NATURAL JOIN product
+NATURAL JOIN users
+GROUP BY GROUPING SETS (product.productname,(product.productname,users.username))
+ORDER BY users.username NULLS FIRST
+--
+SELECT count(*) AS rnd,product.productname,users.username from view_product شبیه به بالایی
+NATURAL JOIN product
+NATURAL JOIN users
+GROUP BY ROLLUP (product.productname,users.username)
+ORDER BY users.username NULLS FIRST
+--
+SELECT count(*) AS rnd,product.productname,users.username from view_product شبیه بالایی
+NATURAL JOIN product
+NATURAL JOIN users
+GROUP BY CUBE (product.productname,users.username)
+ORDER BY users.username NULLS FIRST
+-------------------------------------------
+13-SELECT username FROM users همشو تو یک ستون میاره
+UNION
+SELECT productname FROM product
+--
+SELECT username FROM users تکراری هم شامل میشه
+UNION ALL
+SELECT productname FROM product
+--
+SELECT username FROM users فیلد های مشترک را بر میگردونه
+INTERSECT
+SELECT productname FROM product
+--
+SELECT username FROM users 
+INTERSECT ALL
+SELECT productname FROM product
+--
+SELECT username FROM users بجز فیلد های مشترک
+EXCEPT
+SELECT productname FROM product
+--
+SELECT username FROM users
+EXCEPT ALL
+SELECT productname FROM product
+----------------------------------------------------

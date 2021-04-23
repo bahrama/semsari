@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Cookie;
@@ -48,6 +49,28 @@ public class HomeBean implements Serializable {
 	private List<Product> slide=new ArrayList<>();
 	private FileConvert fileConvert;
 	private User user=new User();
+	
+	private String path2="";
+	private String path3="";
+	
+	
+	
+	public String getPath2() {
+		return path2;
+	}
+
+	public void setPath2(String path2) {
+		this.path2 = path2;
+	}
+
+	public String getPath3() {
+		return path3;
+	}
+
+	public void setPath3(String path3) {
+		this.path3 = path3;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -189,7 +212,15 @@ public class HomeBean implements Serializable {
 	}
 	
 	
+	public void pathAct(ActionEvent e) {
+		this.path2=(String) e.getComponent().getAttributes().get("path2");
+		this.path3=(String) e.getComponent().getAttributes().get("path3");
+	}
 	
-	
+//	public void goToPath2(String path2){
+//		FacesContext contex = FacesContext.getCurrentInstance();
+//		contex.getApplication().getNavigationHandler().handleNavigation(contex, null, "/laptop.xhtml");
+//	}
+
 	
 }
