@@ -18,7 +18,7 @@ import java.util.Date;
 @Table(name="view_product")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="ViewProduct.findAll", query="SELECT v FROM ViewProduct v")
+	@NamedQuery(name="ViewProduct.findAll", query="SELECT v FROM ViewProduct v"),
 })
 public class ViewProduct implements Serializable {
 	private static final long serialVersionUID = 1L;

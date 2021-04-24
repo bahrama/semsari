@@ -139,3 +139,24 @@ SELECT username FROM users
 EXCEPT ALL
 SELECT productname FROM product
 ----------------------------------------------------
+14-SELECT * FROM users 
+WHERE EXISTS(SELECT * FROM view_product WHERE view_product.userid=users.userid)
+--
+SELECT * FROM users 
+WHERE NOT EXISTS(SELECT * FROM view_product WHERE view_product.userid=users.userid)
+--
+SELECT * FROM users WHERE users.userid IN (SELECT userid FROM view_product WHERE view_product.userid=users.userid) مثل 14
+--
+SELECT * FROM users WHERE users.userid= ANY (SELECT userid FROM view_product WHERE view_product.userid=users.userid) فقط اونایی که هست
+--
+SELECT * FROM users WHERE users.userid= ALL (SELECT userid FROM view_product WHERE view_product.userid=users.userid)
+------------------------------------------------------
+15-CREATE OR REPLACE FUNCTION findMaxViewProduct() RETURNS TABLE(productid bigint ,cnt bigint) AS $$
+BEGIN
+RETURN QUERY 
+SELECT view_product.productid , count(*) AS cnt from view_product
+NATURAL JOIN product
+GROUP BY view_product.productid
+ORDER BY cnt DESC;
+END;
+$$ LANGUAGE plpgsql;
