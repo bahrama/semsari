@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +29,14 @@ public class ViewProductDao implements ViewProductDaoLocal {
     @Override
     public void insertViewProduct(ViewProduct viewProduct){
     	entityManager.persist(viewProduct);
+    }
+    
+    @Override
+    @SuppressWarnings("unchecked")
+	public List<Object> findMaxViewProduct(){
+    	List<Object> lst=new ArrayList<Object>();
+    	lst=entityManager.createStoredProcedureQuery("findMaxViewProduct").getResultList();
+    	return entityManager.createStoredProcedureQuery("findMaxViewProduct").getResultList();
     }
 
 }

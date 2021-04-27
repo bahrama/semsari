@@ -7,38 +7,12 @@
 
 <h:head></h:head> 
 <body> 
-<p:dataTable var="transVar" id="tbl1" styleClass="fontIranS"
-						value="#{loginBean.findAllUser()}" rows="10" 
-						rowKey="#{transVar.userId}" paginator="true"
-						resizableColumns="true" liveResize="true" selection="#{walletTransactionBean.walletTransactionEntity}"
-						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" dir="rtl" style="margin:20px" selectionMode="single">
+<ui:repeat var="ss" value="#{loginBean.findAllView()}">
+#{ss[0]}
+<br/>
+#{ss[1]}
+<br/>
+</ui:repeat>
 
-
-						<p:column styleClass="fontIranS" headerText="email"
-							style="font-family:IRANSansBold" sortBy="#{transVar.userId}">
-							<h:outputText value="#{transVar.email}" style="font-family:IRANSansNor;"/>
-						</p:column>
-
-						<p:column styleClass="fontIranS" headerText="pass"
-							style="font-family:IRANSansBold" sortBy="#{transVar.userId}">
-							<h:outputText value="#{transVar.pass}" style="font-family:IRANSansNor;"/>
-						</p:column>
-						<p:column styleClass="fontIranS" headerText="registerDate"
-							style="font-family:IRANSansBold" sortBy="#{transVar.registerDate}">
-							<h:outputText value="#{transVar.registerDate}" style="font-family:IRANSansNor;"/>
-						</p:column>
-
-						<p:column styleClass="fontIranS" headerText="userToken"
-							style="font-family:IRANSansBold" sortBy="#{transVar.userId}">
-							<h:outputText value="#{transVar.userToken}" style="font-family:IRANSansNor;"/>
-						</p:column>
-
-						<p:column styleClass="fontIranS" headerText="username"
-							style="font-family:IRANSansBold" sortBy="#{transVar.userId}">
-							<h:outputText value="#{transVar.username}" style="font-family:IRANSansNor;"/>
-						</p:column>
-
-					</p:dataTable>
 </body> 
 </html>

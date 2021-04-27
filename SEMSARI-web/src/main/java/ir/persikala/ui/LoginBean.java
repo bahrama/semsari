@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 
 import entity.User;
 import service.UserServiceLocal;
+import service.ViewProductServiceLocal;
 
 @Named
 @SessionScoped
@@ -166,5 +167,7 @@ public class LoginBean implements Serializable {
 	public List<User> findAllUser(){
 		return userServiceLocal.findAllUser();
 	}
+	
+
 
 }

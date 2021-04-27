@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import entity.ViewProduct;
@@ -8,5 +10,7 @@ import entity.ViewProduct;
 public interface ViewProductDaoLocal {
 
 	void insertViewProduct(ViewProduct viewProduct);
+
+	List<Object> findMaxViewProduct();
 
 }

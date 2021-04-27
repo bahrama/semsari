@@ -20,9 +20,17 @@ import java.util.Date;
 @NamedQueries({
 	@NamedQuery(name="ViewProduct.findAll", query="SELECT v FROM ViewProduct v"),
 })
+@NamedStoredProcedureQuery(
+		name="findMaxViewProduct",
+		procedureName="(findMaxViewProduct()).*",
+		parameters= {
+				@StoredProcedureParameter(mode=ParameterMode.OUT,type=Long.class,name="productid"),
+				@StoredProcedureParameter(mode=ParameterMode.OUT,type=Long.class,name="cnt")
+		}
+		)
 public class ViewProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@SequenceGenerator(name="VIEW_PRODUCT_VIEWID_GENERATOR", sequenceName="VIEW_VIEWID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="VIEW_PRODUCT_VIEWID_GENERATOR")

@@ -26,6 +26,15 @@ import java.util.Set;
 	@NamedQuery(name="User.findByUserToken", query="SELECT m FROM User m WHERE m.userToken=:v_userToken"),
 	@NamedQuery(name="User.findByUserToken2", query="SELECT m FROM User m WHERE m.userToken2=:v_userToken2")
 })
+//@NamedStoredProcedureQuery(
+//		name="findMaxViewProduct",
+//		procedureName="(findMaxViewProduct()).*",
+//		parameters= {
+//				@StoredProcedureParameter(mode=ParameterMode.OUT,type=Long.class,name="productid"),
+//				@StoredProcedureParameter(mode=ParameterMode.OUT,type=Long.class,name="cnt")
+//		}
+//		)
+
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -142,6 +151,12 @@ public class User implements Serializable {
 
 	public void setUserToken2(String userToken2) {
 		this.userToken2 = userToken2;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", email=" + email + ", pass=" + pass + ", registerDate=" + registerDate
+				+ ", username=" + username + ", userToken=" + userToken + ", userToken2=" + userToken2 + "]";
 	}
 
 	

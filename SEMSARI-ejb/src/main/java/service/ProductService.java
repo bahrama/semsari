@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import dao.ProductDaoLocal;
 import entity.Product;
-import entity.ProductEntity;
 
 /**
  * Session Bean implementation class ProductService

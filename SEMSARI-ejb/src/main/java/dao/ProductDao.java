@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import entity.Product;
-import entity.ProductEntity;
 
 /**
  * Session Bean implementation class ProductDao

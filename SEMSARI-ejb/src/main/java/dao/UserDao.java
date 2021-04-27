@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import entity.Product;
 import entity.User;
 
 /**
@@ -97,5 +96,8 @@ public class UserDao implements UserDaoLocal {
     	throw new Exception();
     }
     }
+    
+
+    
 
 }

@@ -9,48 +9,54 @@
 color: black;
 opacity: 0.8;
 }
+.ui-galleria-filmstrip-wrapper{
+margin-top: 105px;
+}
 </style>
 
 
 	<div class="ui-g">
 
-<div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: darkgray !important;">
+<div class="ui-g-12 ui-md-12 ui-lg-8" style="background-color: gainsboro !important;">
 
-    <p:galleria value="#{homeBean.findAllSlide()}" var="image"  showCaption="true" autoPlay="true">
+    <p:galleria value="#{homeBean.findAllSlide()}" var="image"  showCaption="true" autoPlay="true" style="height: 100%;" effect="scale">
         <o:graphicImage 
 					rendered="#{homeBean.findPic6(image.pic6) ne null}"
 					value="#{homeBean.findPic6(image.pic6)}"
-					dataURI="true" alt="Image Description for #{image.productName}" style="width: 100% !important;height: 100% !important;" title="#{image.productName}"/>
+					dataURI="true" alt="Image Description for #{image.productName}" style="width: 100% !important;height: 500px !important;" title="#{image.productName}"/>
     </p:galleria>
 
 </div>
-<div class="ui-g-12 ui-md-12 ui-lg-4" style="background-color: red;">
-
-        <p:carousel value="#{carouselView.products}" var="product"  autoPlayInterval="2000" responsive="true"
+<div class="ui-g-12 ui-md-12 ui-lg-4" style="background-color: salmon !important;">
+<h5>پر بازدیدترین محصولات</h5>
+        <p:carousel value="#{homeBean.findAllView()}" var="product"  autoPlayInterval="5000" responsive="true"
                     itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
-                    style="width: 500px;" circular="true">
+                    style="width: 100%" circular="true">
             <div class="product">
                 <div class="product-grid-item p-p-5">
                     <div class="product-grid-item-top">
                         <div>
                             <i class="pi pi-tag product-category-icon"/>
-                            <span class="product-category">#{product.category}</span>
+                            <span class="product-category">#{homeBean.findProductbyId(product[0]).productCat1}</span>
                         </div>
-                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                    
                     </div>
                     <div class="product-grid-item-content">
-                        <p:graphicImage name="demo2/#{product.image}"/>
-                        <div class="product-name">#{product.name}</div>
-                        <div class="product-description">#{product.description}</div>
-                        <p:rating readonly="true" value="#{product.rating}"/>
+                    
+                    <o:graphicImage width="200" height="150"
+					value="#{homeBean.findPic1()}"
+					dataURI="true" alt="#{homeBean.product.productName}" title="#{homeBean.product.productName}" style="margin:100px"/>
+                        <div class="product-name">#{homeBean.product.productName}</div>
+                        <div class="product-description">#{homeBean.product.productCat2}</div>
+                        <p:rating readonly="true" value="#{product[1]}"/>
                     </div>
                     <div class="product-grid-item-bottom">
-                        <h:outputText value="#{product.price}" styleClass="product-price">
+                        <h:outputText value="#{homeBean.product.price}" styleClass="product-price">
                             <f:convertNumber currencySymbol="$" type="currency"/>
                         </h:outputText>
                         <p:commandButton type="button" value="Add To Cart"
                                             icon="pi pi-shopping-cart"
-                                            disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                           >
                         </p:commandButton>
                     </div>
                 </div>
@@ -63,10 +69,10 @@ opacity: 0.8;
 <div class="ui-g">
 <div class="ui-g-12 ui-md-12 ui-lg-12">
     <div class="card">
-        <h5>Tabs</h5>
-        <p:carousel numVisible="1" effect="easeInStrong" style="margin-bottom:0" value="#{homeBean.findAllBlogSlide()}" var="blg" autoPlayInterval="2000">
+        <h5>مطالب پر بازدید</h5>
+        <p:carousel numVisible="1" effect="easeInStrong" style="margin-bottom:0" value="#{homeBean.findAllBlogSlide()}" var="blg" autoPlayInterval="5000">
             <p:tab title="Header I">
-                <p class="p-m-0 p-p-3">
+                <p class="p-m-0 p-p-3" style="text-align: justify;direction: rtl;">
 					#{blg.summary}
                 </p>
                 			<p:button value="more" icon="pi pi-shopping-cart" outcome="/pages/ui/blog.xhtml">

@@ -26,5 +26,4 @@ entity\User.class
 dao\ProductDaoLocal.class
 entity\Product.class
 entity\Blog.class
-entity\ProductEntity.class
 dao\ViewProductDao.class

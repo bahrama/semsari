@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -24,6 +26,11 @@ public class ViewProductService implements ViewProductServiceLocal {
     @Override
     public void insertViewProduct(ViewProduct viewProduct){
     	 viewProductDaoLocal.insertViewProduct(viewProduct);
+    }
+    
+    @Override
+	public List<Object> findMaxViewProduct(){
+    	return viewProductDaoLocal.findMaxViewProduct();
     }
     
 

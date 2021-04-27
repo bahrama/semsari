@@ -10,4 +10,5 @@ ir\persikala\ui\InventoryStatus.class
 ir\persikala\ui\LoginBean.class
 ir\persikala\req\FileConvert.class
 ir\persikala\ui\ImagesView.class
+ir\persikala\ui\ProductCatBean.class
 ir\persikala\ui\Product.class

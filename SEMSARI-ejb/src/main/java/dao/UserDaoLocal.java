@@ -25,4 +25,5 @@ public interface UserDaoLocal {
 
 	User findUserByUserToken2(String userToken2) throws Exception;
 
+
 }

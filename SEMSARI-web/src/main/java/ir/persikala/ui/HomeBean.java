@@ -24,6 +24,7 @@ import ir.persikala.req.FileConvert;
 import service.ProductServiceLocal;
 import service.SingleToneSessionBeanLocal;
 import service.UserServiceLocal;
+import service.ViewProductServiceLocal;
 
 @Named
 @SessionScoped
@@ -40,20 +41,19 @@ public class HomeBean implements Serializable {
 	
 	private String userName="مهمان";
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-	//HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 	@Inject
 	private ProductServiceLocal productServiceLocal;
 	@Inject
 	private SingleToneSessionBeanLocal singleToneSessionBeanLocal;
+	@Inject
+	private ViewProductServiceLocal viewProductServiceLocal; 
 	private List<Product> slide=new ArrayList<>();
-	private FileConvert fileConvert;
+	private FileConvert fileConvert=new FileConvert();
 	private User user=new User();
-	
 	private String path2="";
 	private String path3="";
-	
-	
+	private Product product=new Product();
 	
 	public String getPath2() {
 		return path2;
@@ -96,6 +96,15 @@ public class HomeBean implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	FacesContext contex = FacesContext.getCurrentInstance();
@@ -217,10 +226,33 @@ public class HomeBean implements Serializable {
 		this.path3=(String) e.getComponent().getAttributes().get("path3");
 	}
 	
-//	public void goToPath2(String path2){
-//		FacesContext contex = FacesContext.getCurrentInstance();
-//		contex.getApplication().getNavigationHandler().handleNavigation(contex, null, "/laptop.xhtml");
-//	}
 
+	
+	public List<Object> findAllView(){
+		return viewProductServiceLocal.findMaxViewProduct();
+	}
+
+	public Product findProductbyId(long productId) {
+		try {
+			this.product=productServiceLocal.findProductEntityById(productId);
+			return productServiceLocal.findProductEntityById(productId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public byte[] findPic1() {
+		fileConvert =new FileConvert();
+		
+		try {
+			return fileConvert.findPic(product.getPic1());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 }
