@@ -10,6 +10,23 @@
 	text-align: center;
 	border: 1px solid #fafafa;
 }
+p,h2,h1{
+text-align: justify;
+direction: rtl;
+}
+.btn{
+margin: auto;
+display: block;
+width: 200px;
+text-align: center;
+height: 40px;
+border-radius: 20px;
+background-color: aquamarine;
+font-size: 16px;
+}
+.ui-fieldset-legend{
+display: none;
+}
 </style>
 <script src="../../resources/readmore/readmore.js"></script>
     <div class="ui-g">
@@ -27,23 +44,38 @@
      </div>
 	<div class="product card">
 
-	<p:fieldset legend="Header" toggleable="true" toggleSpeed="500">
+	<p:fieldset legend="Header">
 <div class="container">
-	<h1>Read More/Read Less Buttons</h1>
+	<h1>انتخاب بهترین لپتاپ</h1>
 		<article>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum metus ac semper finibus. Praesent vulputate augue ac tempus congue.
-				Curabitur in sapien semper, tristique arcu eget, pharetra risus. Donec tempus aliquet purus eu lobortis.
-				Etiam ac finibus felis. Integer congue sit amet neque sit amet pellentesque. Donec cursus interdum rutrum.
-				Interdum et malesuada fames ac ante ipsum primis in faucibus.
+همیشه این پرسش مطرح بوده که در بین این تنوع گسترده از لپتاپ ها ، چه لپتاپی را با چه قیمتی باید بخرم و انتخاب بهترین لپتاپ یک چالش و البته گاهی هم گیج کننده بوده است
+در فروشگاه پرسی کالا ما بهترین گزینه بر اساس کاربری مورد نیاز شما با بهترین قیمت در اختیار شما عزیزان قرار می دهیم. در زیر با معیار های ارزش گذاری لپتاپ ها آشنا خواهیم شد.
 			</p>
-			<p class="read-more">Praesent luctus at erat at sagittis.
-				Etiam posuere, erat nec laoreet ornare, odio dui mattis nisl, convallis semper ligula lectus eu turpis.
-				Phasellus pharetra risus tortor, eget fringilla tortor laoreet at. Quisque egestas tristique dui. Mauris non iaculis ex.
-				Ut pellentesque, massa ut molestie egestas, tortor leo imperdiet sem, vitae malesuada nibh dolor in magna. Etiam pulvinar pharetra dolor, vel dapibus ipsum commodo eget.
-				Praesent turpis odio, suscipit ut ullamcorper vel, finibus at ligula. Phasellus dolor lectus, molestie a velit sed, iaculis rhoncus risus.
-				Ut id pellentesque erat, quis elementum ligula. Donec dignissim diam sem, a bibendum erat mattis quis. Vivamus id erat dui. Vestibulum sollicitudin ac justo at lacinia.
+			<h2>هارد Ssd (Solid State Drive)</h2>
+			<p>
+			بیشتر افراد برای خرید لپتاپ با تصمیم گیری در مورد پردازنده پردازنده شروع می کنند ولی اولین معیار وجود هارد Ssd هست بجای هادر hdd
+			زیرا هارد های Ssd 
 			</p>
+			<p>1- دارای تکنولوژی جدیدتر</p>
+			<p>2- سرعت خیلی بیشتر</p>
+			<p>3- دوام بیشتری دارند</p>
+			<h2>Ram (حافظه داخلی)</h2>
+			<p>ویندوز 10 برای کارکرد خوب به 8 گیگابایت رم نیاز دارد در حالی که با 4 گیگبایت رم هم کار می کند. در اینجا دو گزینه وجود دارد یکی اینکه 
+			یک لپتاپ با 8 گیگابایت رم بخریم و دیگری این هست که یک لپتاپ با قابلیت ارتقا رم بخریم
+			اگر در مشخصات رم لپتاپ عباراتی همچون expandable ، upgradable ، slots و یا SO-DIMM داشت رم آن لپتاپ قابل ارتقا می باشد.
+			اگر شما نیاز به پردازش دیتا دارید و یا ویرایش فیلم وعکس ، بهتر هست سیستم با رم 16 گیگابایت انتخاب نمایید.</p>
+			<h2 class="read-more">processor (Cpu) یا پردازنده</h2>
+			<p class="read-more">
+			دنیای پردازنده ها بسیار پیچیده تر از آن هستند تا بخواهیم وارد جزیات آنها بشویم ولی در زیر اشاراتی با زبانی ساده تر بیان خواهیم نمود.
+			</p>
+			<p class="read-more">
+			تراشه های Core i7 سریع تر از Core i5 , Core i5 سریع تر از Core i3 می باشند البته نسل های جدید Core i5 می توانند از نسل های قدیمی تر Core i7 سریع تر باشند
+			برای کسب اطلاعات تکمیلی تر می توانید به سایت 
+			<a href="https://cpu.userbenchmark.com/">https://cpu.userbenchmark.com/</a>
+			مراجعه بفرمایید
+			</p>
+			
 		</article>
 	</div>
      </p:fieldset>
@@ -58,7 +90,6 @@
 				buttonClasses: "btn btn-primary",
 			});
 		});
-
 		/*
 			$(function(){
 				$(".read-more").readmore({

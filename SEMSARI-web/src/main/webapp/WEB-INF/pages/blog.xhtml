@@ -10,7 +10,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>#{blogId}</title>
 
-
+	<h:form>
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-12 ui-lg-12">
+				<div class="card" style="text-align: right; direction: rtl;">
+					<p:commandLink value="خانه" action="home?faces-redirect=true"
+						actionListener="#{homeBean.pathAct}">
+						<f:attribute name="path2" value="" />
+					</p:commandLink>
+					/
+		<p:link value="#{blogCat}" outcome="/pages/ui/Blogs.xhtml">
+        <f:param name="blogCat" value="#{blogCat}"/>
+        </p:link>  
+					/
+					<p:link value="#{blogPageBean.finBlogById(blogId).blogName}" outcome="/pages/ui/blog.xhtml">
+						<f:param name="blogCat" value="#{blogCat}"/>
+						<f:param name="blogId" value="#{blogPageBean.finBlogById(blogId).blogid}"/>
+					</p:link>
+				</div>
+			</div>
+		</div>
+	</h:form>
     <div class="ui-g">
        
 

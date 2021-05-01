@@ -5,8 +5,8 @@ $.fn.readmore = function( options ) {
         (
             {
                 div: this,
-                hideText: "Read Less...",
-                readText: "Read More...",
+                hideText: "کمتر",
+                readText: "بیشتر",
                 isTextShown: false,
                 effect: true,
                 effectOption: "fast",

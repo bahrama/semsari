@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui"> 
 
 <h:head>
+<link rel="stylesheet" href="../../resources/fonts.css" />
 <style type="text/css">
     .ui-g div {
         background-color: white!important;
@@ -45,9 +46,9 @@ body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
     .ui-menuitem-link{
     background: none!important;
     }
-    .ui-widget-header{
+/*     .ui-widget-header{
     display: none!important;
-    }
+    } */
     .ddd span{
     color: white !important;
     }
@@ -55,6 +56,12 @@ body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link {
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
     padding-top: 7px !important;
 }
+</style>
+<style>
+        p,h2,h3,td{
+        font-family: IRANSansNor;
+        line-height: 46px;
+        }
 </style>
 </h:head> 
 <h:body> 
@@ -70,7 +77,7 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
      <p:chip label="ثبت نام" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
      </p:commandLink>
      <p:chip label="#{homeBean.findUser()}" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;" id="unme"/>
-     <p:badge value="10+" severity="danger">
+     <p:badge value="0" severity="danger">
          <i class="pi pi-shopping-cart p-ml-4" style="font-size: 2rem;"/>
      </p:badge>
         </div>
@@ -158,30 +165,12 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
                 </p:column>
             </p:submenu>
 
-            <p:submenu label="ابزار آلات" icon="pi pi-fw pi-pencil">
+            <p:submenu label="مطالب" icon="pi pi-fw pi-pencil">
                 <p:column>
-                    <p:submenu label="صنعتی">
-                        <p:menuitem value="آچار"/>
-                        <p:menuitem value="پیچ گوشتی"/>
-                    </p:submenu>
-                    <p:submenu label="خانگی">
-                        <p:menuitem value="آچار"/>
-                        <p:menuitem value="پیچ گوشتی"/>
-                    </p:submenu>
-                </p:column>
-            </p:submenu>
-            
-               <p:submenu label="ظروف یکبار مصرف" icon="pi pi-fw pi-inbox">
-                <p:column>
-                    <p:submenu label="پلاستیک">
-                        <p:menuitem value="لیوان"/>
-                        <p:menuitem value="بشقاب"/>
-                        <p:menuitem value="بشقال"/>
-                    </p:submenu>
-                    <p:submenu label="آلومینیوم">
-                        <p:menuitem value="لیوان"/>
-                        <p:menuitem value="بشقاب"/>
-                        <p:menuitem value="بشقال"/>
+                    <p:submenu>
+                        <p:menuitem value="جهان تکنولوژی" outcome="/pages/ui/Blogs.xhtml" style="border: solid aliceblue 2px;">
+                        <f:param name="blogCat" value="جهان-تکنولوژی"/>
+                        </p:menuitem>
                     </p:submenu>
                 </p:column>
             </p:submenu>

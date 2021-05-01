@@ -14,6 +14,20 @@
 	<!--     <div class="ui-g">
     
         <div class="ui-g-12 ui-md-12 ui-lg-12"> -->
+        
+            <div class="ui-g">
+     <div class="ui-g-12 ui-md-12 ui-lg-12">
+     <div class="card" style="text-align: right;direction: rtl;">
+		<p:commandLink value="خانه" action="home?faces-redirect=true" actionListener="#{homeBean.pathAct}">
+		<f:attribute name="path2" value=""/>
+		</p:commandLink>/
+		<p:link value="#{blogCat}" outcome="/pages/ui/Blogs.xhtml">
+        <f:param name="blogCat" value="#{blogCat}"/>
+        </p:link>  
+
+</div>
+     </div>
+     </div>
 	<div class="product card">
 		<h:form>
 			<p:dataScroller value="#{blogsPageBean.findAllBlog()}" var="product"
@@ -32,7 +46,14 @@
 							<div class="ui-g-12 ui-md-12 ui-lg-12">
 								<div class="product-list-detail"
 									style="display: inline-grid; justify-content: center; align-items: center; height: 200px;">
-									<div class="product-name">#{product.blogName}</div><br/>
+									<div class="product-name">
+									<h:link outcome="/pages/ui/blog.xhtml" value="#{product.blogName}">
+									<f:param name="blogCat" value="#{blogCat}"/>
+									<f:param name="blogId" value="#{product.blogid}"/>
+									</h:link>
+									
+									
+									</div><br/>
 									<p>#{product.summary}</p>
 								</div>
 							</div>
