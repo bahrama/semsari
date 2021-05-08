@@ -18,9 +18,7 @@
     <div class="ui-g">
      <div class="ui-g-12 ui-md-12 ui-lg-12">
      <div class="card" style="text-align: right;direction: rtl;">
-		<p:commandLink value="خانه" action="home?faces-redirect=true" actionListener="#{homeBean.pathAct}">
-		<f:attribute name="path2" value=""/>
-		</p:commandLink>/
+				<p:link value="خانه" outcome="/pages/ui/home.xhtml"/>/
                         <p:link value="#{productCat1}" outcome="/pages/ui/category.xhtml">
                         <f:param name="productCat1" value="#{productCat1}"/>
                         </p:link>                  
@@ -38,7 +36,9 @@
 			<p:dataScroller value="#{productsPageBean.findProductsPage(productCat1,productCat2)}" var="product"
 				chunkSize="5">
 				<f:facet name="header">
-                Scroll Down to Load More Products
+				<span style="directtion:rtl;">
+            #{productCat2} تمام محصولات مربوط به #{productCat1} برند 
+            </span>
             </f:facet>
 
 				<f:facet name="loader">
@@ -55,24 +55,22 @@
 							<div class="ui-g-12 ui-md-12 ui-lg-4">
 								<div class="product-list-detail"
 									style="display: inline-grid; justify-content: center; align-items: center; height: 200px;">
-									<div class="product-name">#{product.productName}</div>
+									<div class="product-name" style="direction: rtl;">#{product.productName}</div>
 									<p:rating readonly="true" value="#{product.price}" />
-									<i class="pi pi-tag product-category-icon" /><span
-										class="product-category">#{product.productCat1}</span>
 								</div>
 							</div>
 							<div class="ui-g-12 ui-md-12 ui-lg-4">
 													<div class="product-list-action" style="display: inline-grid; justify-content: center; align-items: center; height: 200px;">
-							<h:outputText value="#{product.price}" styleClass="product-price">
-								<f:convertNumber currencySymbol="$" type="currency" />
-							</h:outputText>
-							<p:button value="Add To Cart" icon="pi pi-shopping-cart" outcome="/pages/ui/product.xhtml">
-							<f:param name="productId" value="#{product.productId}"/>
+                      <div style="direction: rtl;">
+                        #{product.price}
+                        ریال 
+                      </div>
+							<p:button value="بیشتر" outcome="/pages/ui/product.xhtml">
+							<f:param name="productName" value="#{product.productName}"/>
 							<f:param name="productCat1" value="#{productCat1}"/>
                             <f:param name="productCat2" value="#{productCat2}"/>
 							</p:button>
-							<span
-								class="product-badge status-#{product.productCat2}">#{product.productCat2}</span>
+							
 						</div>
 							</div>
 						</div>

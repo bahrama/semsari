@@ -65,22 +65,31 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 </style>
 </h:head> 
 <h:body> 
+
 <p:outputPanel>
+ <h:form>
 <div class="card">
     <div class="ui-g">
     <!--  -->
+
         <div class="ui-g-12 ui-md-12 ui-lg-4">
-        <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg4').show()">
-     <p:chip label="ورود" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
+     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg4').show()" rendered="#{homeBean.showExit()}">
+     <p:chip label="ورود" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;" id="checkN"/>
      </p:commandLink>
-     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()">
+     
+     <h:commandLink action="#{loginBean.logout()}" rendered="#{!homeBean.showExit()}">
+     <p:chip label="خروج" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;" id="checkN2"/>
+     </h:commandLink>
+     
+     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()" id="sabt" rendered="#{homeBean.showExit()}">
      <p:chip label="ثبت نام" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
      </p:commandLink>
      <p:chip label="#{homeBean.findUser()}" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;" id="unme"/>
      <p:badge value="0" severity="danger">
-         <i class="pi pi-shopping-cart p-ml-4" style="font-size: 2rem;"/>
+     <i class="pi pi-shopping-cart p-ml-4" style="font-size: 2rem;"/>
      </p:badge>
         </div>
+
    <!--  -->   
    
            <div class="ui-g-12 ui-md-12 ui-lg-6">
@@ -93,14 +102,15 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
    
    <!--  -->  
        
-        <div class="ui-g-12 ui-md-12 ui-lg-2">
-        <img src="../../resources/img/persikala.png" alt="logo" style="height: 40px;width: 100%;"/>
+        <div class="ui-g-12 ui-md-12 ui-lg-2" style="background-color: whitesmoke !important;border-radius: 75px;">
+        <!-- <img src="../../resources/img/persikala.png" alt="logo" style="height: 40px;width: 100%;"/> -->
+        <spam style="top: 5px;position: relative;font-size: 20px;background-color: whitesmoke;">USMAL.co</spam>
         </div>
     </div>
     <div class="ui-g">
-     <div class="ui-g-12 ui-md-12 ui-lg-12">
-            <h:form id="frm" prependId="false">
-        <p:megaMenu orientation="horizontal" autoDisplay="false" id="mgmnu" style="height:50px;">
+     <div class="ui-g-12 ui-md-12 ui-lg-12" style="direction: rtl;">
+
+        <p:megaMenu orientation="horizontal" autoDisplay="false" id="mgmnu" style="height:50px;float:right;">
           
 
 
@@ -175,7 +185,7 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
                 </p:column>
             </p:submenu>
         </p:megaMenu>
-        </h:form>
+
         </div>
     </div>
 
@@ -188,10 +198,11 @@ bottom: 0px;
 height: 100px;">
 </div>
 </div>
-
+</h:form>
 </p:outputPanel>
+<h:form>
 <p:dialog header="Header" widgetVar="dlg4" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true" style="direction: rtl;" responsive="true">
-       <h:form>
+        <p:growl id="gmsg" />
         <p:messages id="msgss2"/>
          <div class="p-field p-grid">
             <p:outputLabel for="nameapp2" styleClass="p-col-fixed" style="width:100px" value="نام کاربری"/>
@@ -205,13 +216,15 @@ height: 100px;">
                 <p:password id="pwd3" value="#{loginBean.password}" label="Password" required="true" style="width: 100%;"/>
             </div>
         </div>
-       <p:commandButton actionListener="#{loginBean.login()}" update="@form msgss2 unme" value="Login" />   
-        </h:form>
+       <h:commandButton action="#{loginBean.login()}" value="Login"/>   
+
 </p:dialog>
+</h:form>
+<h:form>
 <p:dialog header="Header" widgetVar="dlg5" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true" style="direction: rtl;" responsive="true">
  <div class="card">
- <h:form>
- <p:messages id="msgss"/>
+
+<p:growl id="gmsg2"/>
  		 <p:message id="message1" showDetail="true" for="nameapp"/>
          <div class="p-field p-grid">
             <p:outputLabel for="nameapp" styleClass="p-col-fixed" style="width:100px" value="نام کاربری"/>
@@ -239,10 +252,11 @@ height: 100px;">
                 <p:password id="pwd2" value="#{loginBean.password}" label="Password 2" required="true" style="width: 100%;"/>
             </div>
         </div>
-        <p:commandButton  actionListener="#{loginBean.register()}" update="@form message3 message2 message1 msgss unme" value="Save" />
+        <h:commandButton action="#{loginBean.register()}" update="@form msgss gmsg2"  value="Save" />
 
- </h:form>
+ 
 </div>
 </p:dialog>
+</h:form>
 </h:body> 
 </html>

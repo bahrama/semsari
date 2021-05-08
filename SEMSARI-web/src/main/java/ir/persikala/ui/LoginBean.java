@@ -1,5 +1,6 @@
 package ir.persikala.ui;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -157,6 +158,8 @@ public class LoginBean implements Serializable {
 			response.addCookie(cookie2);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***خوش آمدید***"));
+			//Thread.sleep(5000);
+			//FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 			}
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "نام کاربری یا رمز عبور اشتباه میباشد", "نام کاربری یا رمز عبور اشتباه میباشد"));
@@ -164,9 +167,26 @@ public class LoginBean implements Serializable {
 		}
 	}
 	
+	public void logout() {
+		System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		Cookie cookie2 = new Cookie("userAuthReg", "");		
+		//cookie2.setMaxAge(1);
+		response.addCookie(cookie2);
+		session.invalidate();
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public List<User> findAllUser(){
 		return userServiceLocal.findAllUser();
 	}
+	
+	
 	
 
 

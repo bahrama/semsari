@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<div class="card">
+    <h:form>
+        <p:focus context="panel"/>
+
+        <p:messages/>
+
+        <h:panelGrid id="panel" columns="3" cellpadding="7">
+            <p:outputLabel for="username" value="Username"/>
+            <p:inputText id="username" value="#{adminLogin.user}" required="true" label="user">
+                <f:validateLength minimum="2"/>
+            </p:inputText>
+            <p:message for="username"/>
+
+            <p:outputLabel for="pass" value="Email"/>
+            <p:inputText id="pass" value="#{adminLogin.pass}" required="true" label="pass"/>
+            <p:message for="pass"/>
+        </h:panelGrid>
+
+        <p:commandButton id="submitButton" value="Save" update="@parent" action="#{adminLogin.adminLogin()}" styleClass="p-mt-3" />
+    </h:form>
+</div>
+</body> 
+</html>

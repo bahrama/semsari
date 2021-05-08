@@ -1,0 +1,27 @@
+<pretty-config
+	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+
+	<url-mapping id="view1">
+		<pattern value="/خانه" />
+		<view-id value="/pages/ui/home.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="view2">
+		<pattern value="/#{productCat1}/خانه" />
+		<view-id value="/pages/ui/category.xhtml" />
+	</url-mapping>
+	
+		<url-mapping id="view3">
+		<pattern value="/#{productCat1}/خانه/#{productCat2}" />
+		<view-id value="/pages/ui/products.xhtml" />
+	</url-mapping>
+	
+			<url-mapping id="view4">
+		<pattern value="/#{productCat1}/خانه/#{productCat2}/#{productName}" />
+		<view-id value="/pages/ui/product.xhtml" />
+	</url-mapping>
+</pretty-config> 

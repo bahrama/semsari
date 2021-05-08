@@ -23,7 +23,8 @@ import java.util.Set;
 	@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p"),
 	@NamedQuery(name="Product.findByProductId", query="SELECT m FROM Product m WHERE m.productId=:v_productId"),
 	@NamedQuery(name="Product.findByProductCat", query="SELECT m FROM Product m WHERE (m.productCat1=:v_productCat1 AND m.productCat2=:v_productCat2)"),
-	@NamedQuery(name="Product.findByProductCat1", query="SELECT m FROM Product m WHERE m.productCat1=:v_productCat1")
+	@NamedQuery(name="Product.findByProductCat1", query="SELECT m FROM Product m WHERE m.productCat1=:v_productCat1"),
+	@NamedQuery(name="Product.findByProductName", query="SELECT m FROM Product m WHERE m.productName=:v_productName"),
 })
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -61,6 +62,10 @@ public class Product implements Serializable {
 	private String productName;
 	@Column(name="productsummary" , length=2000,nullable=false)
 	private String productSummary;
+	@Column(name="metaDescription" , length=200,nullable=true)
+	private String metaDescription;
+	@Column(name="metaKeyword" , length=200,nullable=true)
+	private String metaKeyword;
 
 	//bi-directional many-to-one association to OrderProduct
 	@OneToMany(mappedBy="product", cascade={CascadeType.ALL})
@@ -199,6 +204,22 @@ public class Product implements Serializable {
 
 	public void setViewProducts(Set<ViewProduct> viewProducts) {
 		this.viewProducts = viewProducts;
+	}
+
+	public String getMetaDescription() {
+		return metaDescription;
+	}
+
+	public void setMetaDescription(String metaDescription) {
+		this.metaDescription = metaDescription;
+	}
+
+	public String getMetaKeyword() {
+		return metaKeyword;
+	}
+
+	public void setMetaKeyword(String metaKeyword) {
+		this.metaKeyword = metaKeyword;
 	}
 
 	

@@ -137,4 +137,13 @@ public class ProductPageBean implements Serializable {
 		}
 	}
 	
+	public entity.Product findProductByName(String productName){
+		try {
+	  this.product=productServiceLocal.findProductEntityByName(productName);
+	  return this.product;
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

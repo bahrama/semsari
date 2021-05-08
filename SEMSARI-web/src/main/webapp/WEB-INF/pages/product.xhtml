@@ -87,10 +87,7 @@ width: 100%!important;
 		<div class="ui-g">
 			<div class="ui-g-12 ui-md-12 ui-lg-12">
 				<div class="card" style="text-align: right; direction: rtl;">
-					<p:commandLink value="خانه" action="home?faces-redirect=true"
-						actionListener="#{homeBean.pathAct}">
-						<f:attribute name="path2" value="" />
-					</p:commandLink>
+					<p:link value="خانه" outcome="/pages/ui/home.xhtml"/>
 					/
 					<p:link value="#{productCat1}" outcome="/pages/ui/category.xhtml">
 						<f:param name="productCat1" value="#{productCat1}" />
@@ -102,11 +99,11 @@ width: 100%!important;
 					</p:link>
 					/
 					<p:link
-						value="#{productPageBean.findProductById(productId).productName}"
+						value="#{productPageBean.findProductByName(productName).productName}"
 						outcome="/pages/ui/product.xhtml">
 						<f:param name="productCat1" value="#{productCat1}" />
 						<f:param name="productCat2" value="#{productCat2}" />
-						<f:param name="productId" value="#{productId}" />
+						<f:param name="productName" value="#{productName}" />
 					</p:link>
 				</div>
 			</div>
@@ -114,7 +111,7 @@ width: 100%!important;
 	</h:form>
 	<div class="ui-g">
 		<!--  -->
-		<div class="ui-g-12 ui-md-6 ui-lg-4">
+		<div class="ui-g-12 ui-md-6 ui-lg-5">
 			<div>
 				<div class="exzoom hidden" id="exzoom" style="margin-left: 25px;">
 					<div class="exzoom_img_box">
@@ -140,17 +137,17 @@ width: 100%!important;
 					</p>
 				</div>
 			</div>
-		</div>
-		<div class="ui-g-12 ui-md-6 ui-lg-2"
-			style="display: inline-grid; justify-content: center; align-items: end;">
-			<p style="text-align: justify;">
-			این محصول دارای ضمانت 1 ماهه پرسیکالا بوده و درصورت داشتن هر گونه نقص هیچ قید و شرطی مرجوع و جایگزین خواهد شد. برای راحتی همشهریان عزیز پست این محصول به درب منزل کانلا رایگان بوده و همچنین امکان پرداخت در محل پس از بررسی کامل محصول فراهم می باشد.
-			</p>
-			<p:button icon="pi pi-shopping-cart" value="افزودن به سبد خرید" disabled="true" style="width:100%;"
+			                      <div style="direction: rtl;margin: 10px;
+background-color: lightgreen !important;">
+			                      قیمت : 
+                        #{productPageBean.product.price}
+                        ریال 
+                      </div>
+						<p:button icon="pi pi-shopping-cart" value="افزودن به سبد خرید" disabled="true"
 				styleClass="rounded-button ui-button-danger" />
 			<p:spinner id="minMax" value="#{loginBean.number}" min="0" max="100" disabled="true" />
 		</div>
-		<div class="ui-g-12 ui-md-12 ui-lg-6">
+		<div class="ui-g-12 ui-md-6 ui-lg-7">
 			<div>
 				<h:outputText value="#{productPageBean.product.productSummary}"
 					escape="false" />

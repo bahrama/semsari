@@ -8,16 +8,13 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>#{blogId}</title>
+    <title>#{blogPageBean.finBlogById(blogId).blogName}</title>
 
 	<h:form>
 		<div class="ui-g">
 			<div class="ui-g-12 ui-md-12 ui-lg-12">
 				<div class="card" style="text-align: right; direction: rtl;">
-					<p:commandLink value="خانه" action="home?faces-redirect=true"
-						actionListener="#{homeBean.pathAct}">
-						<f:attribute name="path2" value="" />
-					</p:commandLink>
+<p:link value="خانه" outcome="/pages/ui/home.xhtml"/>
 					/
 		<p:link value="#{blogCat}" outcome="/pages/ui/Blogs.xhtml">
         <f:param name="blogCat" value="#{blogCat}"/>

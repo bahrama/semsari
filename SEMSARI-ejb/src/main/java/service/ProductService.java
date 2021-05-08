@@ -64,5 +64,10 @@ public class ProductService implements ProductServiceLocal {
     public List<Product> findProductEntityByProductCat1(String productCat1) throws Exception{
 		return productDaoLocal.findProductEntityByProductCat1(productCat1);
 	}
+	
+    @Override
+    public Product findProductEntityByName(String productName) throws Exception{
+    	return productDaoLocal.findProductEntityByName(productName);
+    }
 
 }

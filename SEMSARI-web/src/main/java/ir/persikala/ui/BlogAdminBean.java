@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.Column;
+import javax.servlet.http.HttpSession;
 
 import entity.Blog;
 import ir.persikala.req.FileConvert;
@@ -37,7 +40,8 @@ public class BlogAdminBean implements Serializable {
 	@Inject
 	private BlogServiceLocal blogServiceLocal;
 	private FileConvert fileConvert;
-	
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+
 	public String getPage() {
 		return page;
 	}
@@ -93,5 +97,17 @@ public class BlogAdminBean implements Serializable {
 		}
     }
 	
+	
+	public void grantPermission(ComponentSystemEvent event) {
+		Object adminLogin=session.getAttribute("admin");
+		ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
+		if(adminLogin==null) {
+			try {
+				context.redirect("login.xhtml?faces-redirect=true");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

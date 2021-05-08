@@ -33,7 +33,9 @@
 			<p:dataScroller value="#{blogsPageBean.findAllBlog()}" var="product"
 				chunkSize="5">
 				<f:facet name="header">
-                Scroll Down to Load More Products
+                				<span style="directtion:rtl;">
+             تمام مطالب مربوط به #{blogCat} 
+            </span>
             </f:facet>
 
 				<f:facet name="loader">
