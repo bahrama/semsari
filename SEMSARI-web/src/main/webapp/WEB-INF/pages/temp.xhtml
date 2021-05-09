@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui"> 
 
 <h:head>
+<ui:insert name="headPage" />
 <link rel="stylesheet" href="../../resources/fonts.css" />
 <style type="text/css">
     .ui-g div {
@@ -67,8 +68,9 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 <h:body> 
 
 <p:outputPanel>
- <h:form>
+
 <div class="card">
+ <h:form>
     <div class="ui-g">
     <!--  -->
 
@@ -188,7 +190,7 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 
         </div>
     </div>
-
+</h:form>
 <ui:insert name="mainPage" />
 
 
@@ -198,7 +200,7 @@ bottom: 0px;
 height: 100px;">
 </div>
 </div>
-</h:form>
+
 </p:outputPanel>
 <h:form>
 <p:dialog header="Header" widgetVar="dlg4" minHeight="40" width="350" showEffect="fade" minimizable="true" maximizable="true" style="direction: rtl;" responsive="true">

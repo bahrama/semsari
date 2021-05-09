@@ -62,10 +62,28 @@ public class Product implements Serializable {
 	private String productName;
 	@Column(name="productsummary" , length=2000,nullable=false)
 	private String productSummary;
-	@Column(name="metaDescription" , length=200,nullable=true)
+	@Column(name="metaDescription" , length=200,nullable=false)
 	private String metaDescription;
-	@Column(name="metaKeyword" , length=200,nullable=true)
+	@Column(name="metaKeyword" , length=200,nullable=false)
 	private String metaKeyword;
+	
+	@Column(name="altimg1" , length=50,nullable=false)
+	private String altimg1;
+	
+	@Column(name="altimg2" , length=50,nullable=false)
+	private String altimg2;
+	
+	@Column(name="altimg3" , length=50,nullable=false)
+	private String altimg3;
+	
+	@Column(name="altimg4" , length=50,nullable=false)
+	private String altimg4;
+	
+	@Column(name="altimg5" , length=50,nullable=false)
+	private String altimg5;
+	
+	@Column(name="altimg6" , length=50,nullable=false)
+	private String altimg6;
 
 	//bi-directional many-to-one association to OrderProduct
 	@OneToMany(mappedBy="product", cascade={CascadeType.ALL})

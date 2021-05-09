@@ -54,10 +54,11 @@ public class Blog implements Serializable {
 	private String blogCategury2;
 	@Column(name="BlogName" , length=200,nullable=false)
 	private String blogName;
-	@Column(name="metaDescription" , length=200,nullable=true)
+	@Column(name="metaDescription" , length=200,nullable=false)
 	private String metaDescription;
-	@Column(name="metaKeyword" , length=200,nullable=true)
+	@Column(name="metaKeyword" , length=200,nullable=false)
 	private String metaKeyword;
+	
 
 	//bi-directional many-to-one association to ViewBlog
 	@OneToMany(mappedBy="blog", cascade={CascadeType.ALL})

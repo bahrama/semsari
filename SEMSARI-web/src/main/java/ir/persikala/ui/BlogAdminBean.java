@@ -36,7 +36,8 @@ public class BlogAdminBean implements Serializable {
 	private String blogCategury1;
 	private String blogCategury2;
 	private String blogName;
-
+	private String metaDescription;
+	private String metaKeyword;
 	@Inject
 	private BlogServiceLocal blogServiceLocal;
 	private FileConvert fileConvert;
@@ -78,6 +79,20 @@ public class BlogAdminBean implements Serializable {
 	public void setBlogCategury2(String blogCategury2) {
 		this.blogCategury2 = blogCategury2;
 	}
+	
+	
+	public String getMetaDescription() {
+		return metaDescription;
+	}
+	public void setMetaDescription(String metaDescription) {
+		this.metaDescription = metaDescription;
+	}
+	public String getMetaKeyword() {
+		return metaKeyword;
+	}
+	public void setMetaKeyword(String metaKeyword) {
+		this.metaKeyword = metaKeyword;
+	}
 	public void insertBlog(){
     	fileConvert=new FileConvert();
     	Blog blog=new Blog();
@@ -86,6 +101,8 @@ public class BlogAdminBean implements Serializable {
     	blog.setReleasedate(new Date());
     	blog.setSummary(summary);
     	blog.setBlogName(blogName);
+    	blog.setMetaDescription(metaDescription);
+    	blog.setMetaKeyword(metaKeyword);
     	blog.setPage(fileConvert.convertString(page));
     	try {
 			blogServiceLocal.insertBlog(blog);

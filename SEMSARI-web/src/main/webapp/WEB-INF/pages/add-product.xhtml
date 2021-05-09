@@ -75,7 +75,17 @@ direction: rtl;
                 </p:selectOneMenu>
                 <p:message for="productCat2"/>
                 
+                                <p:outputLabel for="metaDescription" value="metaDescription"/>
+                <p:inputText id="metaDescription" value="#{productAdmin.metaDescription}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="metaDescription"/>
                 
+                                <p:outputLabel for="metaKeyword" value="metaKeyword"/>
+                <p:inputText id="metaKeyword" value="#{productAdmin.metaKeyword}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="metaKeyword"/>
 
                 
                 

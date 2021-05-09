@@ -5,10 +5,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui">
 	
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>#{blogPageBean.finBlogById(blogId).blogName}</title>
 
 	<h:form>
 		<div class="ui-g">
@@ -20,9 +16,9 @@
         <f:param name="blogCat" value="#{blogCat}"/>
         </p:link>  
 					/
-					<p:link value="#{blogPageBean.finBlogById(blogId).blogName}" outcome="/pages/ui/blog.xhtml">
+					<p:link value="#{blogPageBean.blog.blogName}" outcome="/pages/ui/blog.xhtml">
 						<f:param name="blogCat" value="#{blogCat}"/>
-						<f:param name="blogId" value="#{blogPageBean.finBlogById(blogId).blogid}"/>
+						<f:param name="blogId" value="#{blogPageBean.blog.blogid}"/>
 					</p:link>
 				</div>
 			</div>

@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Column;
 
 import org.primefaces.model.file.UploadedFile;
 
@@ -44,6 +45,8 @@ public class ProductAdmin implements Serializable {
 	private UploadedFile pic6;
 	private FileConvert fileConvert;
 	private long price;
+	private String metaDescription;
+	private String metaKeyword;
 	public String getProductName() {
 		return productName;
 	}
@@ -122,6 +125,19 @@ public class ProductAdmin implements Serializable {
 	public void setPrice(long price) {
 		this.price = price;
 	}
+	
+	public String getMetaDescription() {
+		return metaDescription;
+	}
+	public void setMetaDescription(String metaDescription) {
+		this.metaDescription = metaDescription;
+	}
+	public String getMetaKeyword() {
+		return metaKeyword;
+	}
+	public void setMetaKeyword(String metaKeyword) {
+		this.metaKeyword = metaKeyword;
+	}
 	public void insertToProduct() {
 		Product productEntity=new Product();
 		fileConvert=new FileConvert();
@@ -140,6 +156,8 @@ public class ProductAdmin implements Serializable {
 			productEntity.setProductName(productName);
 			productEntity.setProductSummary(productSummary);
 			productEntity.setInputDate(new Date());
+			productEntity.setMetaDescription(metaDescription);
+			productEntity.setMetaKeyword(metaKeyword);
 			productServiceLocal.insertProductEntity(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***با موفقیت وارد گردید***"));
