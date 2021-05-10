@@ -47,6 +47,12 @@ public class ProductAdmin implements Serializable {
 	private long price;
 	private String metaDescription;
 	private String metaKeyword;
+	private String altimg1;
+	private String altimg2;
+	private String altimg3;
+	private String altimg4;
+	private String altimg5;
+	private String altimg6;
 	public String getProductName() {
 		return productName;
 	}
@@ -138,6 +144,43 @@ public class ProductAdmin implements Serializable {
 	public void setMetaKeyword(String metaKeyword) {
 		this.metaKeyword = metaKeyword;
 	}
+	
+	public String getAltimg1() {
+		return altimg1;
+	}
+	public void setAltimg1(String altimg1) {
+		this.altimg1 = altimg1;
+	}
+	public String getAltimg2() {
+		return altimg2;
+	}
+	public void setAltimg2(String altimg2) {
+		this.altimg2 = altimg2;
+	}
+	public String getAltimg3() {
+		return altimg3;
+	}
+	public void setAltimg3(String altimg3) {
+		this.altimg3 = altimg3;
+	}
+	public String getAltimg4() {
+		return altimg4;
+	}
+	public void setAltimg4(String altimg4) {
+		this.altimg4 = altimg4;
+	}
+	public String getAltimg5() {
+		return altimg5;
+	}
+	public void setAltimg5(String altimg5) {
+		this.altimg5 = altimg5;
+	}
+	public String getAltimg6() {
+		return altimg6;
+	}
+	public void setAltimg6(String altimg6) {
+		this.altimg6 = altimg6;
+	}
 	public void insertToProduct() {
 		Product productEntity=new Product();
 		fileConvert=new FileConvert();
@@ -158,6 +201,12 @@ public class ProductAdmin implements Serializable {
 			productEntity.setInputDate(new Date());
 			productEntity.setMetaDescription(metaDescription);
 			productEntity.setMetaKeyword(metaKeyword);
+			productEntity.setAltimg1(altimg1);
+			productEntity.setAltimg2(altimg2);
+			productEntity.setAltimg3(altimg3);
+			productEntity.setAltimg4(altimg4);
+			productEntity.setAltimg5(altimg5);
+			productEntity.setAltimg6(altimg6);
 			productServiceLocal.insertProductEntity(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***با موفقیت وارد گردید***"));

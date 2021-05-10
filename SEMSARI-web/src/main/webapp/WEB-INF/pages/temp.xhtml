@@ -75,15 +75,15 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
     <!--  -->
 
         <div class="ui-g-12 ui-md-12 ui-lg-4">
-     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg4').show()" rendered="#{homeBean.showExit()}">
+     <p:commandLink title="ورود به سایت usmal" type="button" icon="pi pi-external-link" onclick="PF('dlg4').show()" rendered="#{homeBean.showExit()}">
      <p:chip label="ورود" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;" id="checkN"/>
      </p:commandLink>
      
-     <h:commandLink action="#{loginBean.logout()}" rendered="#{!homeBean.showExit()}">
+     <h:commandLink title="خروج از سایت usmal" action="#{loginBean.logout()}" rendered="#{!homeBean.showExit()}">
      <p:chip label="خروج" icon="pi pi-lock" styleClass="p-mr-2 custom-chip" style="color:blue;" id="checkN2"/>
      </h:commandLink>
      
-     <p:commandLink type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()" id="sabt" rendered="#{homeBean.showExit()}">
+     <p:commandLink title="ثبت نام در سایت usmal" type="button" icon="pi pi-external-link" onclick="PF('dlg5').show()" id="sabt" rendered="#{homeBean.showExit()}">
      <p:chip label="ثبت نام" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;"/>
      </p:commandLink>
      <p:chip label="#{homeBean.findUser()}" icon="pi pi-user-plus" styleClass="p-mr-2 custom-chip" style="color:blue;" id="unme"/>
@@ -119,38 +119,38 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
             <p:submenu label="کالای دیجیتال" icon="pi pi-fw pi-mobile" style="height:50px;">
                 <p:column>
                     <p:submenu>
-                        <p:menuitem outcome="/pages/ui/category.xhtml" value="لپتاپ" styleClass="ddd" style="font-weight: bold; background-color: dimgray!important;">
+                        <p:menuitem title="درباره لپتاپ ها در سایت usmal" outcome="/pages/ui/category.xhtml" value="لپتاپ" styleClass="ddd" style="font-weight: bold; background-color: dimgray!important;">
                         <f:param name="productCat1" value="لپتاپ"/>
                         </p:menuitem>
                         
-                        <p:menuitem value="Hp" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="لپتاپ hp" value="Hp" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="لپتاپ"/>
                         <f:param name="productCat2" value="Hp"/>
                         </p:menuitem>
-                        <p:menuitem value="Dell" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="لپتاپ Dell" value="Dell" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="لپتاپ"/>
                         <f:param name="productCat2" value="Dell"/>
                         </p:menuitem>
-                        <p:menuitem value="Asus" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="لپتاپ Asus" value="Asus" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="لپتاپ"/>
                         <f:param name="productCat2" value="Asus"/>
                         </p:menuitem>
-                        <p:menuitem value="Msi" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="لپتاپ Msi" value="Msi" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="لپتاپ"/>
                         <f:param name="productCat2" value="Msi"/>
                         </p:menuitem>
                     </p:submenu>
                     <p:submenu>
                     <p:menuitem value="گوشی" outcome="/pages/ui/products.xhtml" styleClass="ddd" style="font-weight: bold; background-color: dimgray!important;"/>
-                        <p:menuitem value="Samsung" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="گوشی Samsung" value="Samsung" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="Mobile"/>
                         <f:param name="productCat2" value="Samsung"/>
                         </p:menuitem>
-                        <p:menuitem value="Mi" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="گوشی Mi" value="Mi" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="Mobile"/>
                         <f:param name="productCat2" value="Mi"/>
                         </p:menuitem>
-                        <p:menuitem value="Lenovo" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
+                        <p:menuitem title="گوشی Lenovo" value="Lenovo" outcome="/pages/ui/products.xhtml" style="border: solid aliceblue 2px;">
                         <f:param name="productCat1" value="Mobile"/>
                         <f:param name="productCat2" value="Lenovo"/>
                         </p:menuitem>
@@ -198,6 +198,20 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 position: relative;
 bottom: 0px;
 height: 100px;">
+    <div class="ui-g">
+     <div class="ui-g-12 ui-md-12 ui-lg-3" style="direction: rtl;">
+     <h2 style="color: white;">محصولات لپتاپ</h2>
+     </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-3" style="direction: rtl;">
+          <h2 style="color: white;">محصولات گوشی</h2>
+     </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-3" style="direction: rtl;">
+          <h2 style="color: white;">محصولات ساعت دیجیتال</h2>
+     </div>
+               <div class="ui-g-12 ui-md-12 ui-lg-3" style="direction: rtl;">
+          <h2 style="color: white;">تماس با ما</h2>
+     </div>
+     </div>
 </div>
 </div>
 

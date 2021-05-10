@@ -240,6 +240,54 @@ public class Product implements Serializable {
 		this.metaKeyword = metaKeyword;
 	}
 
+	public String getAltimg1() {
+		return altimg1;
+	}
+
+	public void setAltimg1(String altimg1) {
+		this.altimg1 = altimg1;
+	}
+
+	public String getAltimg2() {
+		return altimg2;
+	}
+
+	public void setAltimg2(String altimg2) {
+		this.altimg2 = altimg2;
+	}
+
+	public String getAltimg3() {
+		return altimg3;
+	}
+
+	public void setAltimg3(String altimg3) {
+		this.altimg3 = altimg3;
+	}
+
+	public String getAltimg4() {
+		return altimg4;
+	}
+
+	public void setAltimg4(String altimg4) {
+		this.altimg4 = altimg4;
+	}
+
+	public String getAltimg5() {
+		return altimg5;
+	}
+
+	public void setAltimg5(String altimg5) {
+		this.altimg5 = altimg5;
+	}
+
+	public String getAltimg6() {
+		return altimg6;
+	}
+
+	public void setAltimg6(String altimg6) {
+		this.altimg6 = altimg6;
+	}
+
 	
 
 }
