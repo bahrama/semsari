@@ -9,7 +9,18 @@
 		<f:viewParam name="productCat1" />
 		<f:viewParam name="productCat2" />
 	</f:metadata>
-</ui:define>
+	</ui:define>
+	<ui:define name="headPage">
+		<title>#{productCat1}-#{productCat2} صفحه محصولات usmal.ir</title>
+			<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="سایت فروش اینترنتی usmal عرضه کننده لپتاپ  #{productCat2} استوک و نو ، گوشی ، لوازم منزل و دستگاهای صنعتیدر ایران" />
+	<meta name="keywords" content="#{productCat2},لپتاپ,گوشی,فروشگاه,لوازم منزل,دستگاهای صنعتی" />
+	</ui:define>
+	
+
 		<ui:define name="mainPage">
 		<ui:decorate template="../../WEB-INF/pages/products.xhtml" >
 		<ui:param name="productCat1" value="#{productCat1}" />

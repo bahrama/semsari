@@ -40,11 +40,25 @@ direction: rtl;
                 </p:inputText>
                 <p:message for="price"/>
                 
+                
+              <p:outputLabel for="title" value="title"/>
+                <p:inputText id="title" value="#{productAdmin.title}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="title"/>
+                
                 <p:outputLabel for="productSummary" value="productSummary"/>
                 <p:inputTextarea id="productSummary" value="#{productAdmin.productSummary}" required="true" style="width:100%;" autoResize="true">
                  <f:validateLength minimum="2"/>
                 </p:inputTextarea>
                 <p:message for="productSummary"/>
+                
+                                <p:outputLabel for="specification" value="specification"/>
+                <p:inputTextarea id="specification" value="#{productAdmin.specification}" required="true" style="width:100%;" autoResize="true">
+                 <f:validateLength minimum="2"/>
+                </p:inputTextarea>
+                <p:message for="specification"/>
+                
                 
                 <p:outputLabel for="productDescription" value="productDescription"/>
                 <p:inputTextarea id="productDescription" value="#{productAdmin.productDescription}" required="true" style="width:100%;" autoResize="true">
@@ -53,27 +67,25 @@ direction: rtl;
                 <p:message for="productDescription"/>
                 
                 <p:outputLabel for="productCat1" value="productCat1"/>
-               <p:selectOneMenu id="productCat1" value="#{productAdmin.productCat1}" dir="rtl" style="width: 100%;">
+                <p:selectOneMenu id="productCat1" value="#{productAdmin.productCat1}" effect="fold" editable="true">
                     <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Mobile" itemValue="Mobile"/>
-                    <f:selectItem itemLabel="لپتاپ" itemValue="لپتاپ"/>
-                    <f:selectItem itemLabel="Watch" itemValue="Watch"/>
+                    <f:selectItems value="#{menuBean.findAllMenu1()}" itemValue="#{slc.item}" itemLabel="#{slc.item}" var="slc"/>
                 </p:selectOneMenu>
                 <p:message for="productCat1"/>
                 
                                 <p:outputLabel for="productCat2" value="productCat2"/>
-               <p:selectOneMenu id="productCat2" value="#{productAdmin.productCat2}" dir="rtl" style="width: 100%;">
+                <p:selectOneMenu id="productCat2" value="#{productAdmin.productCat2}" effect="fold" editable="true">
                     <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Hp" itemValue="Hp"/>
-                    <f:selectItem itemLabel="Dell" itemValue="Dell"/>
-                    <f:selectItem itemLabel="Asus" itemValue="Asus"/>
-                    <f:selectItem itemLabel="Msi" itemValue="Msi"/>
-                    <f:selectItem itemLabel="Lenovo" itemValue="Lenovo"/>
-                    <f:selectItem itemLabel="Lg" itemValue="Lg"/>
-                    <f:selectItem itemLabel="Samsung" itemValue="Samsung"/>
-                    <f:selectItem itemLabel="Mi" itemValue="Mi"/>
+                    <f:selectItems value="#{menuBean.findAllMenu2()}" itemValue="#{slc.item}" itemLabel="#{slc.item}" var="slc"/>
                 </p:selectOneMenu>
                 <p:message for="productCat2"/>
+                
+                                                <p:outputLabel for="productCat3" value="productCat3"/>
+                <p:selectOneMenu id="productCat3" value="#{productAdmin.productCat3}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItems value="#{menuBean.findAllMenu3()}" itemValue="#{slc.item}" itemLabel="#{slc.item}" var="slc"/>
+                </p:selectOneMenu>
+                <p:message for="productCat3"/>
                 
                                 <p:outputLabel for="metaDescription" value="metaDescription"/>
                 <p:inputText id="metaDescription" value="#{productAdmin.metaDescription}" required="true" style="width:100%;">
@@ -123,7 +135,11 @@ direction: rtl;
                 </p:inputText>
                 <p:message for="altimg6"/>
 
-                
+                                                                                <p:outputLabel for="color" value="color"/>
+                <p:inputText id="color" value="#{productAdmin.color}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="color"/>
                 
                 
                 
@@ -155,12 +171,60 @@ direction: rtl;
             </h:panelGrid>
 
             <p:commandButton value="Save" icon="pi pi-check" action="#{productAdmin.insertToProduct()}" update="growl grid"
-                             oncomplete="handleForm(xhr, status, args)" styleClass="p-mt-3"/>
+                             styleClass="p-mt-3"/>
         </p:panel>
 
         <p:spotlight target="pnl" widgetVar="spot"/>
     </h:form>
         </div>
+        
+        <div class="ui-g-12 ui-md-12 ui-lg-10">
+        <h:form prependId="false" enctype="multipart/form-data">
+         <p:growl id="growl22"/>
+        		<p:dataTable id="tableStateDT2" var="blogs"
+			value="#{productAdmin.findAllProduct()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			 rowKey="#{blogs.productId}"
+			emptyMessage="No cars found with given criteria">
+			
+						<p:column headerText="شناسه" filterBy="#{blogs.productId}"
+				sortBy="#{blogs.productId}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.productId}" />
+			</p:column>
+			
+									<p:column headerText="نام" filterBy="#{blogs.productName}"
+				sortBy="#{blogs.productId}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.productName}" />
+			</p:column>
+			
+						<p:column headerText="برند" filterBy="#{blogs.productCat3}"
+				sortBy="#{blogs.productId}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.productCat3}" />
+			</p:column>
+			
+									<p:column headerText="حذف">
+				<p:commandButton action="#{productAdmin.deleteProduct(blogs)}" value="حذف" update="tableStateDT2 growl22"/>
+			</p:column>
+			
+			</p:dataTable>
+			</h:form>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     <!--  -->
         <div class="ui-g-12 ui-md-12 ui-lg-2">
         <h:form>

@@ -25,6 +25,10 @@ public interface ProductDaoLocal {
 
 	Product findProductEntityByName(String productName) throws Exception;
 
+	List<Product> findProductEntityByProductCat2(String productCat2) throws Exception;
+
+	List<Product> findProductEntityByProductCat23(String productCat2, String productCat3) throws Exception;
+
 
 
 }

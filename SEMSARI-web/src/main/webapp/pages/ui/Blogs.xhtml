@@ -7,6 +7,17 @@
 		<f:metadata>
 		<f:viewParam name="blogCat" />
 	</f:metadata>
+	
+		<ui:define name="headPage">
+		<title> صفحه مطالب مربوط به #{blogCat} usmal.ir</title>
+			<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="سایت فروش اینترنتی usmal عرضه کننده لپتاپ  استوک و نو ، گوشی ، لوازم منزل و دستگاهای صنعتیدر ایران" />
+	<meta name="keywords" content="#{blogCat},لپتاپ,گوشی,فروشگاه,لوازم منزل,دستگاهای صنعتی" />
+	</ui:define>
+	
 		<ui:define name="mainPage">
 		<ui:decorate template="../../WEB-INF/pages/Blogs.xhtml" >
 		</ui:decorate>

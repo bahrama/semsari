@@ -9,15 +9,10 @@
 		<div class="ui-g">
 			<div class="ui-g-12 ui-md-12 ui-lg-12">
 				<div class="card" style="text-align: right; direction: rtl;">
-					<p:link value="خانه" outcome="/pages/ui/home.xhtml"/>
+					<p:link value="خانه" outcome="/pages/ui/home.xhtml" title="صفحه خانه سایت usmal"/>
 					/
 					<p:link value="#{productCat1}" outcome="/pages/ui/category.xhtml">
 						<f:param name="productCat1" value="#{productCat1}" />
-					</p:link>
-					/
-					<p:link value="#{productCat2}" outcome="/pages/ui/products.xhtml">
-						<f:param name="productCat1" value="#{productCat1}" />
-						<f:param name="productCat2" value="#{productCat2}" />
 					</p:link>
 					/
 					<p:link
@@ -27,6 +22,13 @@
 						<f:param name="productCat2" value="#{productCat2}" />
 						<f:param name="productName" value="#{productName}" />
 					</p:link>
+					/
+					<p:link title="صفحه #{productCat2}" value="#{productCat2}" outcome="/pages/ui/products.xhtml">
+						<f:param name="productCat1" value="#{productCat1}" />
+						<f:param name="productCat2" value="#{productCat2}" />
+					</p:link>
+					
+
 				</div>
 			</div>
 		</div>

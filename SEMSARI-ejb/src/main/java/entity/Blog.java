@@ -31,7 +31,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name="blog")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="Blog.findAll", query="SELECT b FROM Blog b"),
+	@NamedQuery(name="Blog.findAll", query="SELECT b FROM Blog b ORDER BY b.blogid DESC"),
 	@NamedQuery(name="Blog.findByBlogId", query="SELECT m FROM Blog m WHERE m.blogid=:v_blogid"),
 	})
 public class Blog implements Serializable {

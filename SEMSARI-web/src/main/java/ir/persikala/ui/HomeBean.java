@@ -148,12 +148,13 @@ public class HomeBean implements Serializable {
 		String userAuth = "";
 		String userAuthReg = "";
 		String ipAddress = request.getHeader("X-FORWARDED-FOR");
+		
 		if (ipAddress == null) {
 			ipAddress = request.getRemoteAddr();
 		}
 		System.err.println("ipAddress:" + ipAddress);
 		boolean taeed = false;
-		if (ipAddress.startsWith("127.0.")) {
+		/*if (ipAddress.startsWith("127.0.")) {
 			taeed = true;
 		}
 		if (ipAddress.startsWith("2.144.")) {
@@ -2731,8 +2732,19 @@ public class HomeBean implements Serializable {
 		if (ipAddress.startsWith("192.168.")) {
 			taeed = true;
 
-		}
-
+		}*/
+		taeed = true;
+		System.err.println(ipAddress);
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		System.err.println(taeed);
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		System.err.println("********************************************");
+		
 		if (userCookies != null && userCookies.length > 0) {
 			for (int i = 0; i < userCookies.length; i++) {
 				if (userCookies[i].getName().equals("userAuth")) {
@@ -2754,7 +2766,7 @@ public class HomeBean implements Serializable {
 				session.setAttribute("userName", "مهمان");
 				UUID uuid = UUID.randomUUID();
 				Cookie cookie2 = new Cookie("userAuth", uuid.toString());
-				cookie2.setPath("/SEMSARI-web");
+				cookie2.setPath("/");
 				cookie2.setMaxAge(2592000);
 				response.addCookie(cookie2);
 				User user = new User();
@@ -2766,6 +2778,8 @@ public class HomeBean implements Serializable {
 				this.user=user;
 				try {
 					userServiceLocal.insertUser(user);
+					this.user = userServiceLocal.findUserByUserToken(uuid.toString());
+					session.setAttribute("userName", "user " + this.user.getUserId());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -2871,11 +2885,15 @@ public class HomeBean implements Serializable {
 	}
 	
 	public boolean showExit() {
+		try {
 		String userSess=(String) session.getAttribute("userName");
 		if((userSess.contains("user"))||(userSess.contains("مهمان")))
 			return true;
 		else
 			return false;
+		}catch (Exception e) {
+			return true;
+		}
 			
 	}
 	

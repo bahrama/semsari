@@ -47,7 +47,7 @@ public class LoginBean implements Serializable {
 	@Size(min=2,max=100, message="حداقل 2 و حداکثر 100")
 	private String password;
 	
-	private User userOnline;
+	private User userOnline=new User();
 	
 	
 	private String nameApp;
@@ -97,6 +97,14 @@ public class LoginBean implements Serializable {
 		this.username = username;
 	}
 	
+	public User getUserOnline() {
+		return userOnline;
+	}
+
+	public void setUserOnline(User userOnline) {
+		this.userOnline = userOnline;
+	}
+
 	public void register() {
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		Cookie[] userCookies = request.getCookies();
@@ -143,7 +151,7 @@ public class LoginBean implements Serializable {
 	
 	public void login() {
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		this.userOnline=new User();
+		//this.userOnline=new User();
 		try {
 			this.userOnline=userServiceLocal.findUserByEmail(email);
 			if(userOnline.getPass().equals(password)) {

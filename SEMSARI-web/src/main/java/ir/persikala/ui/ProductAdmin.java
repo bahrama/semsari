@@ -10,6 +10,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.Column;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.primefaces.model.file.UploadedFile;
 
@@ -31,10 +36,33 @@ public class ProductAdmin implements Serializable {
 	}
 	@Inject
 	private ProductServiceLocal productServiceLocal;
-	
+	@Size(min=3 ,  max=200 , message="max size is 200")
+	@NotNull
+	@NotEmpty
 	private String productName;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String productCat1;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String productCat2;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
+	private String productCat3;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
+	private String color;
+	@Size(min=2 ,  max=200 , message="max size is 200")
+	@NotNull
+	@NotEmpty
+	private String title;
+	@Size(min=2 ,  max=2000 , message="max size is 2000")
+	@NotNull
+	@NotEmpty
 	private String productSummary;
 	private String productDescription;
 	private UploadedFile pic1;
@@ -44,15 +72,41 @@ public class ProductAdmin implements Serializable {
 	private UploadedFile pic5;
 	private UploadedFile pic6;
 	private FileConvert fileConvert;
+	@Min(10) @Max(999999999)
 	private long price;
+	@Size(min=3 ,  max=200 , message="max size is 200")
+	@NotNull
+	@NotEmpty
 	private String metaDescription;
+	@Size(min=3 ,  max=200 , message="max size is 200")
+	@NotNull
+	@NotEmpty
 	private String metaKeyword;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg1;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg2;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg3;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg4;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg5;
+	@Size(min=2 ,  max=50 , message="max size is 50")
+	@NotNull
+	@NotEmpty
 	private String altimg6;
+	private String specification;
 	public String getProductName() {
 		return productName;
 	}
@@ -74,6 +128,24 @@ public class ProductAdmin implements Serializable {
 	}
 
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getProductCat3() {
+		return productCat3;
+	}
+	public void setProductCat3(String productCat3) {
+		this.productCat3 = productCat3;
+	}
 	public UploadedFile getPic1() {
 		return pic1;
 	}
@@ -181,6 +253,14 @@ public class ProductAdmin implements Serializable {
 	public void setAltimg6(String altimg6) {
 		this.altimg6 = altimg6;
 	}
+	
+	
+	public String getSpecification() {
+		return specification;
+	}
+	public void setSpecification(String specification) {
+		this.specification = specification;
+	}
 	public void insertToProduct() {
 		Product productEntity=new Product();
 		fileConvert=new FileConvert();
@@ -194,6 +274,7 @@ public class ProductAdmin implements Serializable {
 			productEntity.setPic6(fileConvert.convertPicture(pic6));
 			productEntity.setProductCat1(productCat1);
 			productEntity.setProductCat2(productCat2);
+			productEntity.setProductCat3(productCat3);
 			productEntity.setPrice(price);
 			productEntity.setProductDescription(fileConvert.convertString(productDescription));
 			productEntity.setProductName(productName);
@@ -207,6 +288,9 @@ public class ProductAdmin implements Serializable {
 			productEntity.setAltimg4(altimg4);
 			productEntity.setAltimg5(altimg5);
 			productEntity.setAltimg6(altimg6);
+			productEntity.setSpecification(specification);
+			productEntity.setColor(color);
+			productEntity.setTitle(title);
 			productServiceLocal.insertProductEntity(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("***با موفقیت وارد گردید***"));
@@ -218,6 +302,12 @@ public class ProductAdmin implements Serializable {
 	
 	public List<Product> findAllProduct(){
 		return productServiceLocal.findAllproductEntity();
+	}
+	
+	public void deleteProduct(Product product) {
+		productServiceLocal.deleteProductEntity(product);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("***با موفقیت حذف گردید***"));
 	}
 
 }

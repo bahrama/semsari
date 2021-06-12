@@ -18,7 +18,8 @@ import java.util.Date;
 @Table(name="user_address")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="UserAddress.findAll", query="SELECT u FROM UserAddress u")
+	@NamedQuery(name="UserAddress.findAll", query="SELECT u FROM UserAddress u"),
+	@NamedQuery(name="UserAddress.findByUser", query="SELECT u FROM UserAddress u WHERE u.user=:v_user")
 })
 public class UserAddress implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class UserAddress implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ADDRESS_ADDRESSID_GENERATOR")
 	@Column(name="addressid")
 	private long addressId;
-	@Column(name="addresss" , length=200,nullable=false)
+	@Column(name="addresss" , length=200,nullable=false , unique=true)
 	private String addresss;
 	@Column(name="mobile" , length=11,nullable=false)
 	private String mobile;
@@ -41,7 +42,7 @@ public class UserAddress implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="userid")
+	@JoinColumn(name="userid" , unique=true)
 	private User user;
 
 	public UserAddress() {

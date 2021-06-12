@@ -20,10 +20,12 @@ import java.util.Set;
 @Table(name="product")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p"),
+	@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p  ORDER BY p.productId ASC"),
 	@NamedQuery(name="Product.findByProductId", query="SELECT m FROM Product m WHERE m.productId=:v_productId"),
-	@NamedQuery(name="Product.findByProductCat", query="SELECT m FROM Product m WHERE (m.productCat1=:v_productCat1 AND m.productCat2=:v_productCat2)"),
-	@NamedQuery(name="Product.findByProductCat1", query="SELECT m FROM Product m WHERE m.productCat1=:v_productCat1"),
+	@NamedQuery(name="Product.findByProductCat", query="SELECT m FROM Product m WHERE (m.productCat1=:v_productCat1 AND m.productCat2=:v_productCat2) ORDER BY m.productId DESC"),
+	@NamedQuery(name="Product.findByProductCat23", query="SELECT m FROM Product m WHERE (m.productCat2=:v_productCat2 AND m.productCat3=:v_productCat3) ORDER BY m.productId DESC"),
+	@NamedQuery(name="Product.findByProductCat1", query="SELECT m FROM Product m WHERE m.productCat1=:v_productCat1 ORDER BY m.productId DESC"),
+	@NamedQuery(name="Product.findByProductCat2", query="SELECT m FROM Product m WHERE m.productCat2=:v_productCat2 ORDER BY m.productId DESC"),
 	@NamedQuery(name="Product.findByProductName", query="SELECT m FROM Product m WHERE m.productName=:v_productName"),
 })
 public class Product implements Serializable {
@@ -56,16 +58,27 @@ public class Product implements Serializable {
 	private String productCat1;
 	@Column(name="productcat2" , length=50,nullable=false)
 	private String productCat2;
+	@Column(name="productcat3" , length=50,nullable=true)
+	private String productCat3;
 	@Column(name="productdescription" , length=100,nullable=false)
 	private String productDescription;
 	@Column(name="productname" , length=200,nullable=false)
 	private String productName;
+	@Column(name="guaranty" , length=200,nullable=true)
+	private String guaranty;
 	@Column(name="productsummary" , length=2000,nullable=false)
 	private String productSummary;
 	@Column(name="metaDescription" , length=200,nullable=false)
 	private String metaDescription;
 	@Column(name="metaKeyword" , length=200,nullable=false)
 	private String metaKeyword;
+	@Column(name="specification" , length=5000,nullable=true)
+	private String specification;
+	@Column(name="color" , length=50,nullable=true)
+	private String color;
+	@Column(name="title" , length=200,nullable=true)
+	private String title;
+	
 	
 	@Column(name="altimg1" , length=50,nullable=false)
 	private String altimg1;
@@ -94,6 +107,30 @@ public class Product implements Serializable {
 	private Set<ViewProduct> viewProducts;
 
 	public Product() {
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getProductCat3() {
+		return productCat3;
+	}
+
+	public void setProductCat3(String productCat3) {
+		this.productCat3 = productCat3;
+	}
+
+	public String getSpecification() {
+		return specification;
+	}
+
+	public void setSpecification(String specification) {
+		this.specification = specification;
 	}
 
 	public long getProductId() {
@@ -150,6 +187,14 @@ public class Product implements Serializable {
 
 	public void setPic5(String pic5) {
 		this.pic5 = pic5;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public String getPic6() {
@@ -286,6 +331,14 @@ public class Product implements Serializable {
 
 	public void setAltimg6(String altimg6) {
 		this.altimg6 = altimg6;
+	}
+
+	public String getGuaranty() {
+		return guaranty;
+	}
+
+	public void setGuaranty(String guaranty) {
+		this.guaranty = guaranty;
 	}
 
 	

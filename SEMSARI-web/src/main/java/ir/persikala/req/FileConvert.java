@@ -23,7 +23,8 @@ public class FileConvert {
 		try {
 		UUID uuid=UUID.randomUUID();
 		byte[] blog = inputString.getBytes(StandardCharsets.UTF_8);
-		File out1 = new File("C:\\Users\\ali\\Pictures\\semsari-doc" + uuid+ ".txt");
+		//File out1 = new File("/home/wildfly/blog/" + uuid+ ".txt");
+		File out1 = new File("C:\\Users\\ali\\Pictures\\semtest\\" + uuid+ ".txt");
 		InputStream in1 = new ByteArrayInputStream(blog);
 		OutputStream outputStream = new FileOutputStream(out1);
 		outputStream.write(blog);
@@ -40,7 +41,8 @@ public class FileConvert {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic.getInputStream());
-			File out3 = new File("C:\\Users\\ali\\Pictures\\semsari-doc" + uuid + ".jpg");
+			//File out3 = new File("/home/wildfly/blog/" + uuid + ".jpg");
+			File out3 = new File("C:\\Users\\ali\\Pictures\\semtest\\" + uuid+ ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -55,7 +57,8 @@ public class FileConvert {
 	
 	public byte[] findPic(String imgName) {
 		try {
-			File imageFile1 = new File("C:\\Users\\ali\\Pictures\\semsari-doc" + imgName + ".jpg");
+			//File imageFile1 = new File("/home/wildfly/blog/" + imgName + ".jpg");
+			File imageFile1 = new File("C:\\Users\\ali\\Pictures\\semtest\\"  + imgName + ".jpg");
 			BufferedImage image1 = ImageIO.read(imageFile1);
 			ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
 			ImageIO.write(image1, "jpg", baos1);
@@ -68,7 +71,8 @@ public class FileConvert {
 	
 	public String convertBlogHead(String blogName) throws Exception{
         try {
-		File file = new File("C:\\Users\\ali\\Pictures\\semsari-doc" + blogName + ".txt");
+		//File file = new File("/home/wildfly/blog/" + blogName + ".txt");
+        	File file = new File("C:\\Users\\ali\\Pictures\\semtest\\" + blogName + ".txt");
 		byte[] bytesArray = new byte[(int) file.length()];
 		FileInputStream fis = new FileInputStream(file);
 		fis.read(bytesArray);

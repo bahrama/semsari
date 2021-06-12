@@ -1,0 +1,208 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<script type="text/javascript">
+    //<![CDATA[
+    function handleForm(xhr, status, args) {
+        if (args.validationFailed)
+            PF('spot').show();
+        else
+            PF('spot').hide();
+    }
+
+    //]]>
+</script>
+<style>
+.ui-panel-content{
+direction: rtl;
+}
+</style>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-lg-10">
+            <h:form prependId="false" enctype="multipart/form-data">
+        <p:growl id="growl"/>
+
+        <p:panel id="pnl" header="افزودن منو 1">
+            <p:messages id="messages"/>
+            <h:panelGrid columns="3" id="grid" cellpadding="7" dir="rtl" style="width: 100%;">
+                <p:outputLabel for="item1" value="item1"/>
+                <p:inputText id="item1" value="#{menuBean.menu1Item}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="item1"/>
+                
+            </h:panelGrid>
+
+            <p:commandButton value="Save" icon="pi pi-check" action="#{menuBean.insertToMenu1()}" update="growl grid tableStateDT"
+                         styleClass="p-mt-3"/>
+        </p:panel>
+
+		<p:dataTable id="tableStateDT" var="blogs"
+			value="#{menuBean.findAllMenu1()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			 rowKey="#{blogs.menu1id}"
+			emptyMessage="No cars found with given criteria">
+			
+						<p:column headerText="شناسه" filterBy="#{blogs.menu1id}"
+				sortBy="#{blogs.menu1id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.menu1id}" />
+			</p:column>
+			
+						<p:column headerText="مقدار" filterBy="#{blogs.item}"
+				sortBy="#{blogs.menu1id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.item}" />
+			</p:column>
+			
+			</p:dataTable>
+    </h:form>
+        </div>
+
+
+ <div class="ui-g-12 ui-md-12 ui-lg-10">
+            <h:form prependId="false" enctype="multipart/form-data">
+        <p:growl id="growl2"/>
+
+        <p:panel id="pnl2" header="افزودن منو 2">
+            <p:messages id="messages2"/>
+            <h:panelGrid columns="3" id="grid2" cellpadding="7" dir="rtl" style="width: 100%;">
+                <p:outputLabel for="item2" value="item1"/>
+                <p:inputText id="item2" value="#{menuBean.menu2Item}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="item2"/>
+                
+                <p:outputLabel for="@next" value="Editable"/>
+                <p:selectOneMenu id="city" value="#{menuBean.selectedMenu1Item}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItems value="#{menuBean.findAllMenu1()}" itemValue="#{slc.item}" itemLabel="#{slc.item}" var="slc"/>
+                </p:selectOneMenu>
+                
+            </h:panelGrid>
+
+            <p:commandButton value="Save" icon="pi pi-check" action="#{menuBean.insertToMenu2()}" update="growl2 tableStateDT2"
+                         styleClass="p-mt-3"/>
+        </p:panel>
+
+
+		<p:dataTable id="tableStateDT2" var="blogs"
+			value="#{menuBean.findAllMenu2()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			 rowKey="#{blogs.menu2id}"
+			emptyMessage="No cars found with given criteria">
+			
+						<p:column headerText="شناسه" filterBy="#{blogs.menu2id}"
+				sortBy="#{blogs.menu2id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.menu2id}" />
+			</p:column>
+			
+									<p:column headerText="menu1" filterBy="#{blogs.item}"
+				sortBy="#{blogs.menu2id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.menu1.item}" />
+			</p:column>
+			
+						<p:column headerText="مقدار" filterBy="#{blogs.item}"
+				sortBy="#{blogs.menu2id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.item}" />
+			</p:column>
+			
+			</p:dataTable>
+    </h:form>
+        </div>
+
+
+
+<div class="ui-g-12 ui-md-12 ui-lg-10">
+            <h:form prependId="false" enctype="multipart/form-data">
+        <p:growl id="growl3"/>
+
+        <p:panel id="pnl3" header="افزودن منو 3">
+            <p:messages id="messages3"/>
+            <h:panelGrid columns="3" id="grid3" cellpadding="7" dir="rtl" style="width: 100%;">
+                <p:outputLabel for="item3" value="item1"/>
+                <p:inputText id="item3" value="#{menuBean.menu3Item}" required="true" style="width:100%;">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+                <p:message for="item3"/>
+                
+                <p:outputLabel for="@next" value="Editable"/>
+                <p:selectOneMenu id="city2" value="#{menuBean.selectedMenu2Item}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItems value="#{menuBean.findAllMenu2()}" itemValue="#{slc.item}" itemLabel="#{slc.item}" var="slc"/>
+                </p:selectOneMenu>
+                
+            </h:panelGrid>
+
+            <p:commandButton value="Save" icon="pi pi-check" action="#{menuBean.insertToMenu3()}" update="growl3 tableStateDT3"
+                         styleClass="p-mt-3"/>
+        </p:panel>
+
+
+		<p:dataTable id="tableStateDT3" var="blogs"
+			value="#{menuBean.findAllMenu3()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			 rowKey="#{blogs.menu3id}"
+			emptyMessage="No cars found with given criteria">
+			
+						<p:column headerText="شناسه" filterBy="#{blogs.menu3id}"
+				sortBy="#{blogs.menu3id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.menu3id}" />
+			</p:column>
+			
+									<p:column headerText="menu1" filterBy="#{blogs.item}"
+				sortBy="#{blogs.menu3id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.menu2.item}" />
+			</p:column>
+			
+						<p:column headerText="مقدار" filterBy="#{blogs.item}"
+				sortBy="#{blogs.menu3id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.item}" />
+			</p:column>
+			
+			</p:dataTable>
+    </h:form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="ui-g-12 ui-md-12 ui-lg-2">
+        <h:form>
+            <div class="card">
+        <p:menu style="direction: rtl;
+float: right;
+width: 100%;
+text-align: right;">
+            <p:submenu label="Options">
+                <p:menuitem value="Save (Non-Ajax)"  ajax="false"
+                            icon="pi pi-save"/>
+                <p:menuitem value="Update"   icon="pi pi-refresh"/>
+                <p:menuitem value="Delete"  icon="pi pi-times"/>
+            </p:submenu>
+            <p:submenu label="Navigations">
+                <p:menuitem value="Website" url="http://www.primefaces.org" icon="pi pi-external-link"/>
+                <p:menuitem value="Internal" icon="pi pi-upload"/>
+            </p:submenu>
+        </p:menu>
+    </div>
+    </h:form>
+        </div>
+
+        </div>
+  </ui:composition>

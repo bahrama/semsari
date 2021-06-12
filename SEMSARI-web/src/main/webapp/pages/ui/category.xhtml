@@ -9,6 +9,36 @@
 		<f:viewParam name="productCat1" />
 	</f:metadata>
 </ui:define>
+
+<ui:define name="headPage">
+	<title>صفحه درباره #{productCat1} سایت usmal.ir</title>
+			<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="سایت فروش اینترنتی usmal عرضه کننده لپتاپ استوک و نو ، گوشی ، لوازم منزل و دستگاهای صنعتیدر ایران" />
+	<meta name="keywords" content="لپتاپ,گوشی,فروشگاه,لوازم منزل,دستگاهای صنعتی" />
+<style>
+.ph{
+text-align: justify;
+direction: rtl;
+}
+.btn{
+margin: auto;
+display: block;
+width: 200px;
+text-align: center;
+height: 40px;
+border-radius: 20px;
+background-color: aquamarine;
+font-size: 16px;
+}
+.ui-fieldset-legend{
+display: none;
+}
+</style>
+
+</ui:define>
 		<ui:define name="mainPage">
 		<ui:decorate template="../../WEB-INF/pages/category.xhtml" >
 		</ui:decorate>
